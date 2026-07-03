@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.CategoryMapper">
+    <select id="categoryList" resultType="com.yousdi.entity.Category">
+        select * from category where isShow=1
+        <if test="channelID != null">
+            and channelID=#{channelID}
+        </if>
+        <if test="id != null">
+            and id= #{id}
+        </if>
+        <if test="isHeader != null">
+            and isHeader= #{isHeader} ORDER BY hSortID
+        </if>
+        <if test="isFooter != null">
+            and isFooter= #{isFooter} ORDER BY fSortID
+        </if>
+    </select>
+    <select id="getCategoryById" resultType="com.yousdi.entity.Category">
+        select * from category where id=#{id}
+    </select>
+    <select id="categoryByChannelID" resultType="com.yousdi.entity.Category">
+        select * from category where channelID=#{channelID} and isShow=1
+    </select>
+    <insert id="addCategory" parameterType="com.yousdi.entity.Category">
+        insert into category(channelID,channelName,title,name,img,mbimg,cimg,url,zhaiyao,content,isHeader,isFooter,isHot,hSortID,fSortID,SEOTitle,SEOKeywords,SEODescription,addTime,updateTime)
+        values(#{channelID},#{channelName},#{title},#{name},#{img},#{mbimg},#{cimg},#{url},#{zhaiyao},#{content},#{isHeader},#{isFooter},#{isHot},#{hSortID},#{fSortID},#{SEOTitle},#{SEOKeywords},#{SEODescription},#{addTime},#{updateTime})
+    </insert>
+    <update id="updateCategory" parameterType="com.yousdi.entity.Category">
+        update category set channelID=#{channelID},channelName=#{channelName},title=#{title},name=#{name},img=#{img},mbimg=#{mbimg},cimg=#{cimg},url=#{url},zhaiyao=#{zhaiyao},content=#{content},isHeader=#{isHeader},isFooter=#{isFooter},isHot=#{isHot},hSortID=#{hSortID},fSortID=#{fSortID},isShow=#{isShow},SEOTitle=#{SEOTitle},SEOKeywords=#{SEOKeywords},SEODescription=#{SEODescription},updateTime=#{updateTime} where id=#{id}
+    </update>
+    <update id="delCategory" parameterType="integer">
+        update category set isShow=0 where id=#{id}
+    </update>
+    <select id="categoryImgList" resultType="com.yousdi.entity.CaseImg">
+        select * from category_imgs where isShow=1
+        <if test="categoryID != null">
+            and categoryID= #{categoryID}
+        </if>
+        <if test="id != null">
+            and id= #{id}
+        </if>
+        ORDER BY sortID
+    </select>
+    <insert id="addCategoryImgs" parameterType="com.yousdi.entity.CaseImg">
+        insert into category_imgs(categoryID,img,sortID,addTime,updateTime)
+        values(#{categoryID},#{img},#{sortID},#{addTime},#{updateTime})
+    </insert>
+    <update id="updateCategoryImgs" parameterType="com.yousdi.entity.CaseImg">
+        update category_imgs set categoryID=#{categoryID},img=#{img},sortID=#{sortID},updateTime=#{updateTime} where id=#{id}
+    </update>
+    <update id="delCategoryImgs" parameterType="Integer">
+        update category_imgs set isShow=0 where id in
+        <foreach item="id" index="index" collection="ids" separator="," close=")" open="(">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

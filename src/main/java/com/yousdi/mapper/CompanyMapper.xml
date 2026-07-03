@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.CompanyMapper">
+    <select id="company" resultType="com.yousdi.entity.Company">
+        select * from company where id = 1;
+    </select>
+    <update id="updateCompany" parameterType="com.yousdi.entity.Company">
+        update company set name = #{name}, title = #{title}, zhaiyao = #{zhaiyao}, subContent = #{subContent}, content = #{content}, mbcontent = #{mbcontent}, img = #{img}, mbimg = #{mbimg}, case1 = #{case1}, case2 = #{case2}, case3 = #{case3}, person = #{person}, job = #{job}, pimg = #{pimg}, history = #{history}, sortID = #{sortID}, isShow = #{isShow}, updateTime = #{updateTime} where id = #{id}
+    </update>
+</mapper>

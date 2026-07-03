@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.ChannelMapper">
+    <select id="channelList" resultType="com.yousdi.entity.Channel">
+        select * from channel where isShow=1
+        <if test="isHeader == 1">
+            and isHeader= #{isHeader}
+        </if>
+        <if test="isFooter == 1">
+            and isFooter=#{isFooter}
+        </if>
+    </select>
+    <select id="channelById" resultType="com.yousdi.entity.Channel">
+        select * from channel where id=#{id}
+    </select>
+    <select id="getChannelByName" resultType="com.yousdi.entity.Channel">
+        select * from channel where name=#{name}
+    </select>
+    <update id="updateChannel" parameterType="com.yousdi.entity.Channel">
+        update channel set name=#{name},title=#{title},subname=#{subname},img=#{img},
+        mbimg=#{mbimg}, isHeader=#{isHeader},isFooter=#{isFooter},url=#{url},
+        isShow=#{isShow},sortID=#{sortID},updateTime=#{updateTime},SEOTitle=#{SEOTitle},SEODescription=#{SEODescription},SEOKeywords=#{SEOKeywords} where id=#{id};
+    </update>
+    <insert id="addChannel" parameterType="com.yousdi.entity.Channel">
+        insert into channel(title,name,enname,subname,img,mbimg,isHeader,isFooter,url,sortID,addTime,updateTime,SEOTitle,SEOKeywords,SEODescription)
+        values(#{title},#{name},#{enname},#{subname},#{img},#{mbimg},#{isHeader},#{isFooter},#{url},#{sortID},#{addTime},#{updateTime},#{SEOTitle},#{SEOKeywords},#{SEODescription});
+    </insert>
+    <update id="delChannel" parameterType="Integer">
+        update channel set isShow=0 where id=#{id};
+    </update>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.ContactMapper">
+    <select id="contactList" resultType="com.yousdi.entity.Contact">
+        select * from contact where isShow = 1
+        <if test="isHot != null">
+            and isHot = #{isHot}
+        </if>
+    </select>
+    <select id="contactById" resultType="com.yousdi.entity.Contact">
+        select * from contact where id = #{id};
+    </select>
+    <insert id="addContact" parameterType="com.yousdi.entity.Contact">
+        insert into contact(categoryID, title,subtitle,img,case1,case2,case3,case4,case5,case6,sortID,isHot,isShow,addTime,updateTime) values (#{categoryID},#{title},#{subtitle},#{img},#{case1},#{case2},#{case3},#{case4},#{case5},#{case6},#{sortID},#{isHot},#{isShow},#{addTime},#{updateTime})
+    </insert>
+    <update id="updateContact" parameterType="com.yousdi.entity.Contact">
+        update contact set categoryID=#{categoryID},title=#{title},subtitle=#{subtitle},img=#{img},case1=#{case1},case2=#{case2},case3=#{case3},case4=#{case4},case5=#{case5},case6=#{case6},sortID=#{sortID},isHot=#{isHot},isShow=#{isShow},addTime=#{addTime},updateTime=#{updateTime} where id = #{id};
+    </update>
+    <update id="delContact" parameterType="integer">
+        update contact set isShow=0 where id = #{id};
+    </update>
+</mapper>

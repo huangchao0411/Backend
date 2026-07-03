@@ -1,0 +1,57 @@
+# 数据库连接
+server:
+  port: 12059
+  address: 0.0.0.0  # 添加这行,确保监听所有网络接口
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    dynamic:
+      druid:
+        validation-query: SELECT 1
+        initial-size: 5
+        max-active: 10
+        min-idle: 5
+        max-wait: 30000
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        validation-query-timeout: 60000
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 100000
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/szyousidi_web_db
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: Pass@123
+
+#        db2:
+#          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_888_2017
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          username: sa
+#          password: abc.123
+#        db3:
+#          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_016_2024
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          username: sa
+#          password: abc.123
+#        db4:
+#          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_018_2024
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          username: sa
+#          password: abc.123
+# 开启日志输入
+mybatis:
+  configuration:
+    #日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #驼峰命名
+    map-underscore-to-camel-case: true
+logging:
+    config: classpath:logback.xml
+

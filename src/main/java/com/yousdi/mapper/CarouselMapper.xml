@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.CarouselMapper">
+    <select id="carousel" resultType="com.yousdi.entity.Carousel">
+        SELECT * FROM carousel WHERE isShow = 1;
+    </select>
+    <select id="carouselById" resultType="com.yousdi.entity.Carousel">
+        SELECT * FROM carousel WHERE id = #{id};
+    </select>
+    <insert id="addCarousel" parameterType="com.yousdi.entity.Carousel">
+        insert into carousel(name, url, img, mbimg, sortID,updateTime, addTime) values (#{name}, #{url},#{img}, #{mbimg}, #{sortID}, #{updateTime}, #{addTime})
+    </insert>
+    <update id="updateCarousel" parameterType="com.yousdi.entity.Carousel">
+        update carousel set name = #{name}, url = #{url}, img = #{img}, mbimg = #{mbimg}, sortID = #{sortID}, updateTime = #{updateTime} where id = #{id}
+    </update>
+    <update id="delCarousel" parameterType="Integer">
+        update carousel set isShow = 0 where id IN
+        <foreach collection="ids" item="id" separator="," close=")" open="(">
+           #{id}
+        </foreach>
+    </update>
+</mapper>

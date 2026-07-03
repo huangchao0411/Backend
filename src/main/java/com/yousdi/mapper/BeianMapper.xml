@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.BeianMapper">
+    <select id="getBeian" resultType="com.yousdi.entity.BeianEntity">
+        select * from beian where id = 1;
+    </select>
+
+    <update id="updateBeian" parameterType="com.yousdi.entity.BeianEntity">
+        update beian set title=#{title}, beian=#{beian}, url=#{url}, company=#{company}, bqtime=#{bqtime}, updateTime=#{updateTime} where id = 1;
+    </update>
+</mapper>

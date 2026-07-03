@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusdi.mapper.UserMapper">
+    <insert id="addUser" parameterType="com.yousdi.entity.UserEntity">
+        insert into manager(username, password, roleID, name, addTime, updateTime) values (#{username}, #{password}, #{roleID}, #{name},  #{addTime}, #{updateTime})
+    </insert>
+    <update id="modifyUser" parameterType="com.yousdi.entity.UserEntity">
+        update manager set username=#{username}, password=#{password}, roleID=#{roleID}, name=#{name}, isLock=#{isLock}, updateTime=#{updateTime} where id=#{id}
+    </update>
+    <select id="getUser" resultType="com.yousdi.entity.UserEntity" >
+        select * from manager where username=#{username} and password=#{password}
+    </select>
+    <select id="getAllUser" resultType="com.yousdi.entity.UserEntity">
+        select * from manager order by id
+    </select>
+    <select id="getUserById" resultType="com.yousdi.entity.UserEntity">
+        select * from manager where id=#{id}
+    </select>
+    <update id="delUser" parameterType="Integer">
+        update manager set isLock=#{isLock} where id=#{id}
+    </update>
+    <update id="modifyUserPsd" >
+        update manager set password=#{newPsd} where id=#{id} and password=#{oldPsd}
+    </update>
+</mapper>
