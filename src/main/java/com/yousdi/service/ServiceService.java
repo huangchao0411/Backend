@@ -1,16 +1,18 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.Service;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.ServiceEntity;
+
 import java.util.List;
 
-public interface ServiceService {
-    List<Service> service();
+public interface ServiceService extends IService<ServiceEntity> {
+    List<ServiceEntity> service();
 
-    Service getServiceById(Integer var1);
+    ServiceEntity getServiceById(Integer var1);
 
-    void addService(Service var1);
+    void addService(ServiceEntity var1);
 
-    void updateService(Service var1);
+    void updateService(ServiceEntity var1);
 
     void deleteService(Integer var1);
 }

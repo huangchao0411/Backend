@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Channel;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.ChannelEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ChannelService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ public class ChannelController {
         log.info("channelList:{}", isHeader);
 
         try {
-            List<Channel> channelList = this.channelService.channelList(isHeader, isFooter);
-            return Result.success(channelList);
+            List<ChannelEntity> channelEntityList = this.channelService.channelList(isHeader, isFooter);
+            return Result.success(channelEntityList);
         } catch (Exception e) {
             return Result.error("获取失败:" + e.getMessage());
         }
@@ -45,8 +45,8 @@ public class ChannelController {
         log.info("getChannelById： {}", id);
 
         try {
-            Channel channelById = this.channelService.getChannelById(id);
-            return Result.success(channelById);
+            ChannelEntity channelEntityById = this.channelService.getChannelById(id);
+            return Result.success(channelEntityById);
         } catch (Exception e) {
             return Result.error("获取失败:" + e.getMessage());
         }
@@ -57,15 +57,15 @@ public class ChannelController {
         log.info("getChannelByName： {}", name);
 
         try {
-            Channel channelByName = this.channelService.getChannelByName(name);
-            return Result.success(channelByName);
+            ChannelEntity channelEntityByName = this.channelService.getChannelByName(name);
+            return Result.success(channelEntityByName);
         } catch (Exception e) {
             return Result.error("获取失败:" + e.getMessage());
         }
     }
 
     @PutMapping
-    public Result updateChannel(@RequestBody Channel c) {
+    public Result updateChannel(@RequestBody ChannelEntity c) {
         log.info("updateChannel： {}", c);
 
         try {
@@ -77,7 +77,7 @@ public class ChannelController {
     }
 
     @PostMapping
-    public Result addChannel(@RequestBody Channel c) {
+    public Result addChannel(@RequestBody ChannelEntity c) {
         log.info("addChannel： {}", c);
 
         try {

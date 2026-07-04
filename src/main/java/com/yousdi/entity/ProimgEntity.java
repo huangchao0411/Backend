@@ -6,30 +6,22 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Carousel implements Serializable {
+public class ProimgEntity implements Serializable {
 
     private Integer id;
-    private String name;
+    private Integer pid;
     private String img;
-    private String mbimg;
-    private String url;
-    private short isShow;
-    private int sortID;
     private LocalDateTime addTime;
     private LocalDateTime updateTime;
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Carousel)) {
+        } else if (!(o instanceof ProimgEntity)) {
             return false;
         } else {
-            Carousel other = (Carousel)o;
+            ProimgEntity other = (ProimgEntity)o;
             if (!other.canEqual(this)) {
-                return false;
-            } else if (this.getIsShow() != other.getIsShow()) {
-                return false;
-            } else if (this.getSortID() != other.getSortID()) {
                 return false;
             } else {
                 Object this$id = this.getId();
@@ -42,13 +34,13 @@ public class Carousel implements Serializable {
                     return false;
                 }
 
-                Object this$name = this.getName();
-                Object other$name = other.getName();
-                if (this$name == null) {
-                    if (other$name != null) {
+                Object this$pid = this.getPid();
+                Object other$pid = other.getPid();
+                if (this$pid == null) {
+                    if (other$pid != null) {
                         return false;
                     }
-                } else if (!this$name.equals(other$name)) {
+                } else if (!this$pid.equals(other$pid)) {
                     return false;
                 }
 
@@ -59,26 +51,6 @@ public class Carousel implements Serializable {
                         return false;
                     }
                 } else if (!this$img.equals(other$img)) {
-                    return false;
-                }
-
-                Object this$mbimg = this.getMbimg();
-                Object other$mbimg = other.getMbimg();
-                if (this$mbimg == null) {
-                    if (other$mbimg != null) {
-                        return false;
-                    }
-                } else if (!this$mbimg.equals(other$mbimg)) {
-                    return false;
-                }
-
-                Object this$url = this.getUrl();
-                Object other$url = other.getUrl();
-                if (this$url == null) {
-                    if (other$url != null) {
-                        return false;
-                    }
-                } else if (!this$url.equals(other$url)) {
                     return false;
                 }
 
@@ -108,24 +80,18 @@ public class Carousel implements Serializable {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Carousel;
+        return other instanceof ProimgEntity;
     }
 
     public int hashCode() {
         int PRIME = 59;
         int result = 1;
-        result = result * 59 + this.getIsShow();
-        result = result * 59 + this.getSortID();
         Object $id = this.getId();
         result = result * 59 + ($id == null ? 43 : $id.hashCode());
-        Object $name = this.getName();
-        result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $pid = this.getPid();
+        result = result * 59 + ($pid == null ? 43 : $pid.hashCode());
         Object $img = this.getImg();
         result = result * 59 + ($img == null ? 43 : $img.hashCode());
-        Object $mbimg = this.getMbimg();
-        result = result * 59 + ($mbimg == null ? 43 : $mbimg.hashCode());
-        Object $url = this.getUrl();
-        result = result * 59 + ($url == null ? 43 : $url.hashCode());
         Object $addTime = this.getAddTime();
         result = result * 59 + ($addTime == null ? 43 : $addTime.hashCode());
         Object $updateTime = this.getUpdateTime();
@@ -134,20 +100,16 @@ public class Carousel implements Serializable {
     }
 
     public String toString() {
-        return "Carousel(id=" + this.getId() + ", name=" + this.getName() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", url=" + this.getUrl() + ", isShow=" + this.getIsShow() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
+        return "Proimg(id=" + this.getId() + ", pid=" + this.getPid() + ", img=" + this.getImg() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Carousel() {
+    public ProimgEntity() {
     }
 
-    public Carousel(Integer id, String name, String img, String mbimg, String url, short isShow, int sortID, LocalDateTime addTime, LocalDateTime updateTime) {
+    public ProimgEntity(Integer id, Integer pid, String img, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
-        this.name = name;
+        this.pid = pid;
         this.img = img;
-        this.mbimg = mbimg;
-        this.url = url;
-        this.isShow = isShow;
-        this.sortID = sortID;
         this.addTime = addTime;
         this.updateTime = updateTime;
     }

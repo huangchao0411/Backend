@@ -1,4 +1,4 @@
-package com.yousdi.entity;
+package com.yousdi.utils;
 
 import lombok.Data;
 

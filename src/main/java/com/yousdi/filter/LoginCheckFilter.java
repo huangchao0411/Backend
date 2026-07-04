@@ -1,7 +1,7 @@
 package com.yousdi.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yousdi.entity.Result;
+import com.yousdi.utils.Result;
 import com.yousdi.utils.JwtUtils;
 import java.io.IOException;
 import javax.servlet.Filter;

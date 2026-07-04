@@ -1,26 +1,30 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.CaseImg;
-import com.yousdi.entity.Category;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.CaseImgEntity;
+import com.yousdi.entity.CategoryEntity;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface CategoryMapper {
-    List<Category> categoryList(@Param("channelID") Integer var1, @Param("isHeader") Integer var2, @Param("isFooter") Integer var3, @Param("id") Integer var4);
+public interface CategoryMapper extends BaseMapper<CategoryEntity> {
 
-    void addCategory(Category var1);
+    List<CategoryEntity> categoryList(@Param("channelID") Integer var1, @Param("isHeader") Integer var2, @Param("isFooter") Integer var3, @Param("id") Integer var4);
 
-    void updateCategory(Category var1);
+    void addCategory(CategoryEntity var1);
+
+    void updateCategory(CategoryEntity var1);
 
     void delCategory(Integer var1);
 
-    List<CaseImg> categoryImgList(@Param("categoryID") Integer var1, @Param("id") Integer var2);
+    List<CaseImgEntity> categoryImgList(@Param("categoryID") Integer var1, @Param("id") Integer var2);
 
-    void updateCategoryImgs(CaseImg var1);
+    void updateCategoryImgs(CaseImgEntity var1);
 
     void delCategoryImgs(@Param("ids") List<Integer> var1);
 
-    void addCategoryImgs(CaseImg var1);
+    void addCategoryImgs(CaseImgEntity var1);
+
 }

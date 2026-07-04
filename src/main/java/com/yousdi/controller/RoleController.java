@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Result;
-import com.yousdi.entity.Role;
+import com.yousdi.utils.Result;
+import com.yousdi.entity.RoleEntity;
 import com.yousdi.service.RoleService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -27,8 +27,8 @@ public class RoleController {
         log.info("getAllRole");
 
         try {
-            List<Role> roles = this.roleService.getAllRole();
-            return Result.success(roles);
+            List<RoleEntity> roleEntities = this.roleService.getAllRole();
+            return Result.success(roleEntities);
         } catch (Exception e) {
             String mgs = e.getMessage();
             return Result.error(mgs);

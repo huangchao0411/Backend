@@ -1,14 +1,18 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Message;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.MessageEntity;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface MessageMapper {
-    List<Message> message(String var1);
+public interface MessageMapper extends BaseMapper<MessageEntity> {
 
-    void addMessage(Message var1);
+    List<MessageEntity> message(String var1);
 
-    void updateMessage(Message var1);
+    void addMessage(MessageEntity var1);
+
+    void updateMessage(MessageEntity var1);
+
 }

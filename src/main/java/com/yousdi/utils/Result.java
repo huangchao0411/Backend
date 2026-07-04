@@ -1,38 +1,37 @@
-package com.yousdi.entity;
+package com.yousdi.utils;
 
 import lombok.Data;
 
 @Data
-public class UploadResult {
+public class Result {
 
     private Integer code;
-    private Integer errno;
     private String msg;
     private Object data;
 
-    public static UploadResult success(Object data) {
-        return new UploadResult(1, 0, "success", data);
+    public static Result success(Object data) {
+        return new Result(1, "success", data);
     }
 
-    public static UploadResult success() {
-        return new UploadResult(1, 0, "success", (Object)null);
+    public static Result success() {
+        return new Result(1, "success", (Object)null);
     }
 
-    public static UploadResult error(String msg) {
-        return new UploadResult(0, 1, msg, (Object)null);
+    public static Result error(String msg) {
+        return new Result(0, msg, (Object)null);
     }
 
     public String toString() {
-        return " Result { code = " + this.errno + ", msg = '" + this.msg + '\'' + ", data = " + this.data + '}';
+        return " Result { code = " + this.code + ", msg = '" + this.msg + '\'' + ", data = " + this.data + '}';
     }
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof UploadResult)) {
+        } else if (!(o instanceof Result)) {
             return false;
         } else {
-            UploadResult other = (UploadResult)o;
+            Result other = (Result)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -43,16 +42,6 @@ public class UploadResult {
                         return false;
                     }
                 } else if (!this$code.equals(other$code)) {
-                    return false;
-                }
-
-                Object this$errno = this.getErrno();
-                Object other$errno = other.getErrno();
-                if (this$errno == null) {
-                    if (other$errno != null) {
-                        return false;
-                    }
-                } else if (!this$errno.equals(other$errno)) {
                     return false;
                 }
 
@@ -82,7 +71,7 @@ public class UploadResult {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof UploadResult;
+        return other instanceof Result;
     }
 
     public int hashCode() {
@@ -90,8 +79,6 @@ public class UploadResult {
         int result = 1;
         Object $code = this.getCode();
         result = result * 59 + ($code == null ? 43 : $code.hashCode());
-        Object $errno = this.getErrno();
-        result = result * 59 + ($errno == null ? 43 : $errno.hashCode());
         Object $msg = this.getMsg();
         result = result * 59 + ($msg == null ? 43 : $msg.hashCode());
         Object $data = this.getData();
@@ -99,12 +86,11 @@ public class UploadResult {
         return result;
     }
 
-    public UploadResult() {
+    public Result() {
     }
 
-    public UploadResult(Integer code, Integer errno, String msg, Object data) {
+    public Result(Integer code, String msg, Object data) {
         this.code = code;
-        this.errno = errno;
         this.msg = msg;
         this.data = data;
     }

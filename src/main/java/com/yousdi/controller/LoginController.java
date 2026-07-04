@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Password;
-import com.yousdi.entity.Result;
+import com.yousdi.utils.PageBean;
+import com.yousdi.entity.PasswordEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.entity.UserEntity;
 import com.yousdi.service.LoginService;
 import com.yousdi.service.UserService;
@@ -78,7 +78,7 @@ public class LoginController {
     }
 
     @PutMapping({"/user/password"})
-    public Result updateUserPsd(@RequestBody Password psd) {
+    public Result updateUserPsd(@RequestBody PasswordEntity psd) {
         log.info("updateUser： {}", psd);
 
         try {

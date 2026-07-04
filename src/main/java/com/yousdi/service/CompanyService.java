@@ -1,9 +1,10 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.Company;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.CompanyEntity;
 
-public interface CompanyService {
-    Company company();
+public interface CompanyService extends IService<CompanyEntity> {
+    CompanyEntity company();
 
-    void updateCompany(Company var1);
+    void updateCompany(CompanyEntity var1);
 }

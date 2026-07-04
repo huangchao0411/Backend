@@ -1,19 +1,23 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Carousel;
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.CarouselEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
-public interface CarouselMapper {
-    List<Carousel> carousel();
+public interface CarouselMapper extends BaseMapper<CarouselEntity> {
 
-    void addCarousel(Carousel var1);
+    List<CarouselEntity> carousel();
 
-    void updateCarousel(Carousel var1);
+    void addCarousel(CarouselEntity var1);
 
-    Carousel carouselById(Integer var1);
+    void updateCarousel(CarouselEntity var1);
+
+    CarouselEntity carouselById(Integer var1);
 
     void delCarousel(@Param("ids") List<Integer> var1);
+
 }

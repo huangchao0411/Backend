@@ -1,34 +1,33 @@
 package com.yousdi.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.yousdi.entity.MessageEntity;
 import com.yousdi.mapper.MessageMapper;
-import com.yousdi.entity.Message;
-import com.yousdi.entity.PageBean;
 import com.yousdi.service.MessageService;
-import java.time.LocalDateTime;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yousdi.utils.PageBean;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
-public class MessageServiceImpl implements MessageService {
-    @Autowired
-    private MessageMapper messageMapper;
+public class MessageServiceImpl extends ServiceImpl<MessageMapper, MessageEntity> implements MessageService {
 
     public PageBean message(Integer pageNo, Integer pageSize, String keyword) {
         PageHelper.startPage(pageNo, pageSize);
-        List<Message> messages = this.messageMapper.message(keyword);
-        Page<Message> pageBean = (Page)messages;
+        List<MessageEntity> messageEntities = baseMapper.message(keyword);
+        Page<MessageEntity> pageBean = (Page) messageEntities;
         return new PageBean(pageBean.getTotal(), pageBean.getResult());
     }
 
-    public void addMessage(Message message) {
-        message.setAddTime(LocalDateTime.now());
-        this.messageMapper.addMessage(message);
+    public void addMessage(MessageEntity messageEntity) {
+        messageEntity.setAddTime(LocalDateTime.now());
+        baseMapper.addMessage(messageEntity);
     }
 
-    public void updateMessage(Message message) {
-        this.messageMapper.updateMessage(message);
+    public void updateMessage(MessageEntity messageEntity) {
+        baseMapper.updateMessage(messageEntity);
     }
 }

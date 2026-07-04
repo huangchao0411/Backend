@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yusdi.mapper.NewsMapper">
-    <select id="newsList" resultType="com.yousdi.entity.News">
+    <select id="newsEntityList" resultType="com.yousdi.entity.NewsEntity">
         select * from news where isShow = 1
          <if test="isHot != null">
             and isHot = #{isHot}
@@ -14,14 +14,14 @@
          </if>
          order by sortID, updateTime desc
     </select>
-    <select id="newsById" resultType="com.yousdi.entity.News">
+    <select id="newsEntityById" resultType="com.yousdi.entity.NewsEntity">
         select * from news where id=#{id}
     </select>
-    <insert id="addNews" parameterType="com.yousdi.entity.News">
+    <insert id="addNews" parameterType="com.yousdi.entity.NewsEntity">
         insert into news(categoryID,categoryName,title,img, mbimg, url, zhaiyao, content ,mbcontent, isHot, isRed, SEOTitle, SEOKeywords, SEODescription, sortID, addTime, updateTime)
         values(#{categoryID},#{categoryName},#{title},#{img},#{mbimg},#{url},#{zhaiyao},#{content},#{mbcontent}, #{isHot},#{isRed},#{SEOTitle},#{SEOKeywords},#{SEODescription},#{sortID},#{addTime}, #{updateTime})
     </insert>
-    <update id="updateNews" parameterType="com.yousdi.entity.News">
+    <update id="updateNews" parameterType="com.yousdi.entity.NewsEntity">
         update news set categoryID=#{categoryID}, categoryName=#{categoryName}, title=#{title},img=#{img}, mbimg=#{mbimg}, url=#{url}, zhaiyao=#{zhaiyao},content=#{content}, mbcontent=#{mbcontent}, isHot=#{isHot},
         isRed=#{isRed}, SEOTitle=#{SEOTitle}, SEOKeywords=#{SEOKeywords}, SEODescription=#{SEODescription}, sortID=#{sortID}, updateTime=#{updateTime}
         where id=#{id}

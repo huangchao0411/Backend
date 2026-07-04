@@ -6,49 +6,38 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Category implements Serializable {
+public class ChannelEntity implements Serializable {
 
     private Integer id;
-    private Integer channelID;
-    private String channelName;
     private String title;
     private String name;
+    private String enname;
+    private String subname;
     private String img;
     private String mbimg;
-    private String cimg;
-    private String url;
-    private String zhaiyao;
-    private String content;
     private short isHeader;
     private short isFooter;
-    private short isHot;
-    private int hSortID;
-    private int fSortID;
+    private String url;
     private short isShow;
+    private Integer sortID;
+    private LocalDateTime addTime;
+    private LocalDateTime updateTime;
     private String SEOTitle;
     private String SEOKeywords;
     private String SEODescription;
-    private LocalDateTime addTime;
-    private LocalDateTime updateTime;
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Category)) {
+        } else if (!(o instanceof ChannelEntity)) {
             return false;
         } else {
-            Category other = (Category)o;
+            ChannelEntity other = (ChannelEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getIsHeader() != other.getIsHeader()) {
                 return false;
             } else if (this.getIsFooter() != other.getIsFooter()) {
-                return false;
-            } else if (this.getIsHot() != other.getIsHot()) {
-                return false;
-            } else if (this.getHSortID() != other.getHSortID()) {
-                return false;
-            } else if (this.getFSortID() != other.getFSortID()) {
                 return false;
             } else if (this.getIsShow() != other.getIsShow()) {
                 return false;
@@ -63,23 +52,13 @@ public class Category implements Serializable {
                     return false;
                 }
 
-                Object this$channelID = this.getChannelID();
-                Object other$channelID = other.getChannelID();
-                if (this$channelID == null) {
-                    if (other$channelID != null) {
+                Object this$sortID = this.getSortID();
+                Object other$sortID = other.getSortID();
+                if (this$sortID == null) {
+                    if (other$sortID != null) {
                         return false;
                     }
-                } else if (!this$channelID.equals(other$channelID)) {
-                    return false;
-                }
-
-                Object this$channelName = this.getChannelName();
-                Object other$channelName = other.getChannelName();
-                if (this$channelName == null) {
-                    if (other$channelName != null) {
-                        return false;
-                    }
-                } else if (!this$channelName.equals(other$channelName)) {
+                } else if (!this$sortID.equals(other$sortID)) {
                     return false;
                 }
 
@@ -103,6 +82,26 @@ public class Category implements Serializable {
                     return false;
                 }
 
+                Object this$enname = this.getEnname();
+                Object other$enname = other.getEnname();
+                if (this$enname == null) {
+                    if (other$enname != null) {
+                        return false;
+                    }
+                } else if (!this$enname.equals(other$enname)) {
+                    return false;
+                }
+
+                Object this$subname = this.getSubname();
+                Object other$subname = other.getSubname();
+                if (this$subname == null) {
+                    if (other$subname != null) {
+                        return false;
+                    }
+                } else if (!this$subname.equals(other$subname)) {
+                    return false;
+                }
+
                 Object this$img = this.getImg();
                 Object other$img = other.getImg();
                 if (this$img == null) {
@@ -123,16 +122,6 @@ public class Category implements Serializable {
                     return false;
                 }
 
-                Object this$cimg = this.getCimg();
-                Object other$cimg = other.getCimg();
-                if (this$cimg == null) {
-                    if (other$cimg != null) {
-                        return false;
-                    }
-                } else if (!this$cimg.equals(other$cimg)) {
-                    return false;
-                }
-
                 Object this$url = this.getUrl();
                 Object other$url = other.getUrl();
                 if (this$url == null) {
@@ -143,23 +132,23 @@ public class Category implements Serializable {
                     return false;
                 }
 
-                Object this$zhaiyao = this.getZhaiyao();
-                Object other$zhaiyao = other.getZhaiyao();
-                if (this$zhaiyao == null) {
-                    if (other$zhaiyao != null) {
+                Object this$addTime = this.getAddTime();
+                Object other$addTime = other.getAddTime();
+                if (this$addTime == null) {
+                    if (other$addTime != null) {
                         return false;
                     }
-                } else if (!this$zhaiyao.equals(other$zhaiyao)) {
+                } else if (!this$addTime.equals(other$addTime)) {
                     return false;
                 }
 
-                Object this$content = this.getContent();
-                Object other$content = other.getContent();
-                if (this$content == null) {
-                    if (other$content != null) {
+                Object this$updateTime = this.getUpdateTime();
+                Object other$updateTime = other.getUpdateTime();
+                if (this$updateTime == null) {
+                    if (other$updateTime != null) {
                         return false;
                     }
-                } else if (!this$content.equals(other$content)) {
+                } else if (!this$updateTime.equals(other$updateTime)) {
                     return false;
                 }
 
@@ -193,33 +182,13 @@ public class Category implements Serializable {
                     return false;
                 }
 
-                Object this$addTime = this.getAddTime();
-                Object other$addTime = other.getAddTime();
-                if (this$addTime == null) {
-                    if (other$addTime != null) {
-                        return false;
-                    }
-                } else if (!this$addTime.equals(other$addTime)) {
-                    return false;
-                }
-
-                Object this$updateTime = this.getUpdateTime();
-                Object other$updateTime = other.getUpdateTime();
-                if (this$updateTime == null) {
-                    if (other$updateTime != null) {
-                        return false;
-                    }
-                } else if (!this$updateTime.equals(other$updateTime)) {
-                    return false;
-                }
-
                 return true;
             }
         }
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Category;
+        return other instanceof ChannelEntity;
     }
 
     public int hashCode() {
@@ -227,74 +196,62 @@ public class Category implements Serializable {
         int result = 1;
         result = result * 59 + this.getIsHeader();
         result = result * 59 + this.getIsFooter();
-        result = result * 59 + this.getIsHot();
-        result = result * 59 + this.getHSortID();
-        result = result * 59 + this.getFSortID();
         result = result * 59 + this.getIsShow();
         Object $id = this.getId();
         result = result * 59 + ($id == null ? 43 : $id.hashCode());
-        Object $channelID = this.getChannelID();
-        result = result * 59 + ($channelID == null ? 43 : $channelID.hashCode());
-        Object $channelName = this.getChannelName();
-        result = result * 59 + ($channelName == null ? 43 : $channelName.hashCode());
+        Object $sortID = this.getSortID();
+        result = result * 59 + ($sortID == null ? 43 : $sortID.hashCode());
         Object $title = this.getTitle();
         result = result * 59 + ($title == null ? 43 : $title.hashCode());
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $enname = this.getEnname();
+        result = result * 59 + ($enname == null ? 43 : $enname.hashCode());
+        Object $subname = this.getSubname();
+        result = result * 59 + ($subname == null ? 43 : $subname.hashCode());
         Object $img = this.getImg();
         result = result * 59 + ($img == null ? 43 : $img.hashCode());
         Object $mbimg = this.getMbimg();
         result = result * 59 + ($mbimg == null ? 43 : $mbimg.hashCode());
-        Object $cimg = this.getCimg();
-        result = result * 59 + ($cimg == null ? 43 : $cimg.hashCode());
         Object $url = this.getUrl();
         result = result * 59 + ($url == null ? 43 : $url.hashCode());
-        Object $zhaiyao = this.getZhaiyao();
-        result = result * 59 + ($zhaiyao == null ? 43 : $zhaiyao.hashCode());
-        Object $content = this.getContent();
-        result = result * 59 + ($content == null ? 43 : $content.hashCode());
+        Object $addTime = this.getAddTime();
+        result = result * 59 + ($addTime == null ? 43 : $addTime.hashCode());
+        Object $updateTime = this.getUpdateTime();
+        result = result * 59 + ($updateTime == null ? 43 : $updateTime.hashCode());
         Object $SEOTitle = this.getSEOTitle();
         result = result * 59 + ($SEOTitle == null ? 43 : $SEOTitle.hashCode());
         Object $SEOKeywords = this.getSEOKeywords();
         result = result * 59 + ($SEOKeywords == null ? 43 : $SEOKeywords.hashCode());
         Object $SEODescription = this.getSEODescription();
         result = result * 59 + ($SEODescription == null ? 43 : $SEODescription.hashCode());
-        Object $addTime = this.getAddTime();
-        result = result * 59 + ($addTime == null ? 43 : $addTime.hashCode());
-        Object $updateTime = this.getUpdateTime();
-        result = result * 59 + ($updateTime == null ? 43 : $updateTime.hashCode());
         return result;
     }
 
     public String toString() {
-        return "Category(id=" + this.getId() + ", channelID=" + this.getChannelID() + ", channelName=" + this.getChannelName() + ", title=" + this.getTitle() + ", name=" + this.getName() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", cimg=" + this.getCimg() + ", url=" + this.getUrl() + ", zhaiyao=" + this.getZhaiyao() + ", content=" + this.getContent() + ", isHeader=" + this.getIsHeader() + ", isFooter=" + this.getIsFooter() + ", isHot=" + this.getIsHot() + ", hSortID=" + this.getHSortID() + ", fSortID=" + this.getFSortID() + ", isShow=" + this.getIsShow() + ", SEOTitle=" + this.getSEOTitle() + ", SEOKeywords=" + this.getSEOKeywords() + ", SEODescription=" + this.getSEODescription() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
+        return "Channel(id=" + this.getId() + ", title=" + this.getTitle() + ", name=" + this.getName() + ", enname=" + this.getEnname() + ", subname=" + this.getSubname() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", isHeader=" + this.getIsHeader() + ", isFooter=" + this.getIsFooter() + ", url=" + this.getUrl() + ", isShow=" + this.getIsShow() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ", SEOTitle=" + this.getSEOTitle() + ", SEOKeywords=" + this.getSEOKeywords() + ", SEODescription=" + this.getSEODescription() + ")";
     }
 
-    public Category(Integer id, Integer channelID, String channelName, String title, String name, String img, String mbimg, String cimg, String url, String zhaiyao, String content, short isHeader, short isFooter, short isHot, int hSortID, int fSortID, short isShow, String SEOTitle, String SEOKeywords, String SEODescription, LocalDateTime addTime, LocalDateTime updateTime) {
+    public ChannelEntity(Integer id, String title, String name, String enname, String subname, String img, String mbimg, short isHeader, short isFooter, String url, short isShow, Integer sortID, LocalDateTime addTime, LocalDateTime updateTime, String SEOTitle, String SEOKeywords, String SEODescription) {
         this.id = id;
-        this.channelID = channelID;
-        this.channelName = channelName;
         this.title = title;
         this.name = name;
+        this.enname = enname;
+        this.subname = subname;
         this.img = img;
         this.mbimg = mbimg;
-        this.cimg = cimg;
-        this.url = url;
-        this.zhaiyao = zhaiyao;
-        this.content = content;
         this.isHeader = isHeader;
         this.isFooter = isFooter;
-        this.isHot = isHot;
-        this.hSortID = hSortID;
-        this.fSortID = fSortID;
+        this.url = url;
         this.isShow = isShow;
+        this.sortID = sortID;
+        this.addTime = addTime;
+        this.updateTime = updateTime;
         this.SEOTitle = SEOTitle;
         this.SEOKeywords = SEOKeywords;
         this.SEODescription = SEODescription;
-        this.addTime = addTime;
-        this.updateTime = updateTime;
     }
 
-    public Category() {
+    public ChannelEntity() {
     }
 }

@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Result;
-import com.yousdi.entity.UploadPath;
-import com.yousdi.entity.UploadResult;
+import com.yousdi.utils.Result;
+import com.yousdi.utils.UploadPath;
+import com.yousdi.utils.UploadResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;

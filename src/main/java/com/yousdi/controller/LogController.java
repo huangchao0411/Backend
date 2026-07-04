@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Log;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.LogEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.LogService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class LogController {
     private LogService logService;
 
     @PostMapping
-    public Result insertLog(@RequestBody Log loginfo) {
+    public Result insertLog(@RequestBody LogEntity loginfo) {
         try {
             log.info("日志信息： {}", loginfo);
             this.logService.insertLog(loginfo);
@@ -41,8 +41,8 @@ public class LogController {
     public Result logList(@RequestParam(value = "pageNo",defaultValue = "1") int pageNo, @RequestParam(value = "pageSize",defaultValue = "15") int pageSize) {
         try {
             log.info("页码：{}, 尺寸：{}", pageNo, pageSize);
-            List<Log> logs = this.logService.logList(pageNo, pageSize);
-            return Result.success(logs);
+            List<LogEntity> logEntities = this.logService.logList(pageNo, pageSize);
+            return Result.success(logEntities);
         } catch (Exception e) {
             String mgs = e.getMessage();
             return Result.error(mgs);

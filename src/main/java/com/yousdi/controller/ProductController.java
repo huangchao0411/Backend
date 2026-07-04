@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Product;
-import com.yousdi.entity.Result;
+import com.yousdi.utils.PageBean;
+import com.yousdi.entity.ProductEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ProductService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -46,19 +46,19 @@ public class ProductController {
         log.info("查询产品id：{}", id);
 
         try {
-            Product product = this.productService.productById(id);
-            return Result.success(product);
+            ProductEntity productEntity = this.productService.productById(id);
+            return Result.success(productEntity);
         } catch (Exception ex) {
             return Result.error(ex.getMessage());
         }
     }
 
     @PostMapping
-    public Result addProduct(@RequestBody Product product) {
-        log.info("添加产品：{}", product);
+    public Result addProduct(@RequestBody ProductEntity productEntity) {
+        log.info("添加产品：{}", productEntity);
 
         try {
-            Integer id = this.productService.addProduct(product);
+            Integer id = this.productService.addProduct(productEntity);
             return Result.success(id);
         } catch (Exception ex) {
             return Result.error("添加失败：" + ex.getMessage());
@@ -66,11 +66,11 @@ public class ProductController {
     }
 
     @PutMapping
-    public Result updateProduct(@RequestBody Product product) {
-        log.info("修改产品：{}", product);
+    public Result updateProduct(@RequestBody ProductEntity productEntity) {
+        log.info("修改产品：{}", productEntity);
 
         try {
-            this.productService.updateProduct(product);
+            this.productService.updateProduct(productEntity);
             return Result.success("修改成功");
         } catch (Exception ex) {
             return Result.error("修改失败：" + ex.getMessage());

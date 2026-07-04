@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Process;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.ProcessEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ProcessService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -32,8 +32,8 @@ public class ProcessController {
         log.info("process");
 
         try {
-            List<Process> processList = this.processService.process();
-            return Result.success(processList);
+            List<ProcessEntity> processEntityList = this.processService.process();
+            return Result.success(processEntityList);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
@@ -44,15 +44,15 @@ public class ProcessController {
         log.info("getProcessById： {}", id);
 
         try {
-            Process process = this.processService.getProcessById(id);
-            return Result.success(process);
+            ProcessEntity processEntity = this.processService.getProcessById(id);
+            return Result.success(processEntity);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PostMapping
-    public Result addProcess(@RequestBody Process p) {
+    public Result addProcess(@RequestBody ProcessEntity p) {
         log.info("addProcess： {}", p);
 
         try {
@@ -64,7 +64,7 @@ public class ProcessController {
     }
 
     @PutMapping
-    public Result updateProcess(@RequestBody Process p) {
+    public Result updateProcess(@RequestBody ProcessEntity p) {
         log.info("updateProcess： {}", p);
 
         try {

@@ -3,7 +3,7 @@ package com.yousdi.entity;
 import lombok.Data;
 
 @Data
-public class Role {
+public class RoleEntity {
 
     private Integer id;
     private String name;
@@ -12,10 +12,10 @@ public class Role {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Role)) {
+        } else if (!(o instanceof RoleEntity)) {
             return false;
         } else {
-            Role other = (Role)o;
+            RoleEntity other = (RoleEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -55,7 +55,7 @@ public class Role {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Role;
+        return other instanceof RoleEntity;
     }
 
     public int hashCode() {
@@ -74,10 +74,10 @@ public class Role {
         return "Role(id=" + this.getId() + ", name=" + this.getName() + ", desc=" + this.getDesc() + ")";
     }
 
-    public Role() {
+    public RoleEntity() {
     }
 
-    public Role(Integer id, String name, String desc) {
+    public RoleEntity(Integer id, String name, String desc) {
         this.id = id;
         this.name = name;
         this.desc = desc;

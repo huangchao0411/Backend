@@ -3,7 +3,7 @@ package com.yousdi.entity;
 import lombok.Data;
 
 @Data
-public class Password {
+public class PasswordEntity {
 
     private Integer id;
     private String oldPsd;
@@ -12,10 +12,10 @@ public class Password {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Password)) {
+        } else if (!(o instanceof PasswordEntity)) {
             return false;
         } else {
-            Password other = (Password)o;
+            PasswordEntity other = (PasswordEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -55,7 +55,7 @@ public class Password {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Password;
+        return other instanceof PasswordEntity;
     }
 
     public int hashCode() {
@@ -74,10 +74,10 @@ public class Password {
         return "Password(id=" + this.getId() + ", oldPsd=" + this.getOldPsd() + ", newPsd=" + this.getNewPsd() + ")";
     }
 
-    public Password() {
+    public PasswordEntity() {
     }
 
-    public Password(Integer id, String oldPsd, String newPsd) {
+    public PasswordEntity(Integer id, String oldPsd, String newPsd) {
         this.id = id;
         this.oldPsd = oldPsd;
         this.newPsd = newPsd;

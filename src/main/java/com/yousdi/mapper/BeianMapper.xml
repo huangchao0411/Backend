@@ -6,6 +6,6 @@
     </select>
 
     <update id="updateBeian" parameterType="com.yousdi.entity.BeianEntity">
-        update beian set title=#{title}, beian=#{beian}, url=#{url}, company=#{company}, bqtime=#{bqtime}, updateTime=#{updateTime} where id = 1;
+        update beian set title=#{title}, beian=#{beian}, url=#{url}, companyEntity=#{companyEntity}, bqtime=#{bqtime}, updateTime=#{updateTime} where id = 1;
     </update>
 </mapper>

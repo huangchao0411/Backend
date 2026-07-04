@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.News;
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.NewsEntity;
+import com.yousdi.utils.PageBean;
+import com.yousdi.utils.Result;
 import com.yousdi.service.NewsService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -46,15 +46,15 @@ public class NewsController {
         log.info("getNewsById： {}", id);
 
         try {
-            News newsById = this.newsService.getNewsById(id);
-            return Result.success(newsById);
+            NewsEntity newsEntityById = this.newsService.getNewsById(id);
+            return Result.success(newsEntityById);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PostMapping
-    public Result addNews(@RequestBody News n) {
+    public Result addNews(@RequestBody NewsEntity n) {
         log.info("addNews： {}", n);
 
         try {
@@ -66,7 +66,7 @@ public class NewsController {
     }
 
     @PutMapping
-    public Result updateNews(@RequestBody News n) {
+    public Result updateNews(@RequestBody NewsEntity n) {
         log.info("updateNews： {}", n);
 
         try {

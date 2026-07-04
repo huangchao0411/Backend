@@ -1,10 +1,11 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Password;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.PasswordEntity;
 import com.yousdi.entity.UserEntity;
+import com.yousdi.utils.PageBean;
 
-public interface UserService {
+public interface UserService extends IService<UserEntity> {
     void addUser(UserEntity var1);
 
     void modifyUser(UserEntity var1);
@@ -17,5 +18,5 @@ public interface UserService {
 
     void deleteUser(Integer var1, Integer var2);
 
-    void modifyUserPsd(Password var1);
+    void modifyUserPsd(PasswordEntity var1);
 }

@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
 import com.yousdi.entity.BeianEntity;
-import com.yousdi.entity.Result;
+import com.yousdi.utils.Result;
 import com.yousdi.service.BeianService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

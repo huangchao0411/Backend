@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Result;
-import com.yousdi.entity.Service;
+import com.yousdi.entity.ServiceEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ServiceService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ public class ServiceController {
         log.info("service");
 
         try {
-            List<Service> services = this.serviceService.service();
-            return Result.success(services);
+            List<ServiceEntity> serviceEntities = this.serviceService.service();
+            return Result.success(serviceEntities);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
@@ -45,15 +45,15 @@ public class ServiceController {
         log.info("getServiceById： {}", id);
 
         try {
-            Service service = this.serviceService.getServiceById(id);
-            return Result.success(service);
+            ServiceEntity serviceEntity = this.serviceService.getServiceById(id);
+            return Result.success(serviceEntity);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PostMapping
-    public Result addService(@RequestBody Service s) {
+    public Result addService(@RequestBody ServiceEntity s) {
         log.info("addService： {}", s);
 
         try {
@@ -65,7 +65,7 @@ public class ServiceController {
     }
 
     @PutMapping
-    public Result updateService(@RequestBody Service s) {
+    public Result updateService(@RequestBody ServiceEntity s) {
         log.info("updateService： {}", s);
 
         try {

@@ -1,16 +1,18 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.Process;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.ProcessEntity;
+
 import java.util.List;
 
-public interface ProcessService {
-    List<Process> process();
+public interface ProcessService extends IService<ProcessEntity> {
+    List<ProcessEntity> process();
 
-    Process getProcessById(Integer var1);
+    ProcessEntity getProcessById(Integer var1);
 
-    void addProcess(Process var1);
+    void addProcess(ProcessEntity var1);
 
-    void updateProcess(Process var1);
+    void updateProcess(ProcessEntity var1);
 
     void deleteProcess(Integer var1);
 }

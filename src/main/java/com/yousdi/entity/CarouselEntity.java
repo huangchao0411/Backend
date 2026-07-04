@@ -2,27 +2,34 @@ package com.yousdi.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class CaseImg {
+public class CarouselEntity implements Serializable {
 
     private Integer id;
-    private Integer categoryID;
+    private String name;
     private String img;
-    private Short isShow;
-    private Integer sortID;
+    private String mbimg;
+    private String url;
+    private short isShow;
+    private int sortID;
     private LocalDateTime addTime;
     private LocalDateTime updateTime;
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof CaseImg)) {
+        } else if (!(o instanceof CarouselEntity)) {
             return false;
         } else {
-            CaseImg other = (CaseImg)o;
+            CarouselEntity other = (CarouselEntity)o;
             if (!other.canEqual(this)) {
+                return false;
+            } else if (this.getIsShow() != other.getIsShow()) {
+                return false;
+            } else if (this.getSortID() != other.getSortID()) {
                 return false;
             } else {
                 Object this$id = this.getId();
@@ -35,33 +42,13 @@ public class CaseImg {
                     return false;
                 }
 
-                Object this$categoryID = this.getCategoryID();
-                Object other$categoryID = other.getCategoryID();
-                if (this$categoryID == null) {
-                    if (other$categoryID != null) {
+                Object this$name = this.getName();
+                Object other$name = other.getName();
+                if (this$name == null) {
+                    if (other$name != null) {
                         return false;
                     }
-                } else if (!this$categoryID.equals(other$categoryID)) {
-                    return false;
-                }
-
-                Object this$isShow = this.getIsShow();
-                Object other$isShow = other.getIsShow();
-                if (this$isShow == null) {
-                    if (other$isShow != null) {
-                        return false;
-                    }
-                } else if (!this$isShow.equals(other$isShow)) {
-                    return false;
-                }
-
-                Object this$sortID = this.getSortID();
-                Object other$sortID = other.getSortID();
-                if (this$sortID == null) {
-                    if (other$sortID != null) {
-                        return false;
-                    }
-                } else if (!this$sortID.equals(other$sortID)) {
+                } else if (!this$name.equals(other$name)) {
                     return false;
                 }
 
@@ -72,6 +59,26 @@ public class CaseImg {
                         return false;
                     }
                 } else if (!this$img.equals(other$img)) {
+                    return false;
+                }
+
+                Object this$mbimg = this.getMbimg();
+                Object other$mbimg = other.getMbimg();
+                if (this$mbimg == null) {
+                    if (other$mbimg != null) {
+                        return false;
+                    }
+                } else if (!this$mbimg.equals(other$mbimg)) {
+                    return false;
+                }
+
+                Object this$url = this.getUrl();
+                Object other$url = other.getUrl();
+                if (this$url == null) {
+                    if (other$url != null) {
+                        return false;
+                    }
+                } else if (!this$url.equals(other$url)) {
                     return false;
                 }
 
@@ -101,22 +108,24 @@ public class CaseImg {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof CaseImg;
+        return other instanceof CarouselEntity;
     }
 
     public int hashCode() {
         int PRIME = 59;
         int result = 1;
+        result = result * 59 + this.getIsShow();
+        result = result * 59 + this.getSortID();
         Object $id = this.getId();
         result = result * 59 + ($id == null ? 43 : $id.hashCode());
-        Object $categoryID = this.getCategoryID();
-        result = result * 59 + ($categoryID == null ? 43 : $categoryID.hashCode());
-        Object $isShow = this.getIsShow();
-        result = result * 59 + ($isShow == null ? 43 : $isShow.hashCode());
-        Object $sortID = this.getSortID();
-        result = result * 59 + ($sortID == null ? 43 : $sortID.hashCode());
+        Object $name = this.getName();
+        result = result * 59 + ($name == null ? 43 : $name.hashCode());
         Object $img = this.getImg();
         result = result * 59 + ($img == null ? 43 : $img.hashCode());
+        Object $mbimg = this.getMbimg();
+        result = result * 59 + ($mbimg == null ? 43 : $mbimg.hashCode());
+        Object $url = this.getUrl();
+        result = result * 59 + ($url == null ? 43 : $url.hashCode());
         Object $addTime = this.getAddTime();
         result = result * 59 + ($addTime == null ? 43 : $addTime.hashCode());
         Object $updateTime = this.getUpdateTime();
@@ -125,19 +134,21 @@ public class CaseImg {
     }
 
     public String toString() {
-        return "CaseImg(id=" + this.getId() + ", categoryID=" + this.getCategoryID() + ", img=" + this.getImg() + ", isShow=" + this.getIsShow() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
+        return "Carousel(id=" + this.getId() + ", name=" + this.getName() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", url=" + this.getUrl() + ", isShow=" + this.getIsShow() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public CaseImg(Integer id, Integer categoryID, String img, Short isShow, Integer sortID, LocalDateTime addTime, LocalDateTime updateTime) {
+    public CarouselEntity() {
+    }
+
+    public CarouselEntity(Integer id, String name, String img, String mbimg, String url, short isShow, int sortID, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
-        this.categoryID = categoryID;
+        this.name = name;
         this.img = img;
+        this.mbimg = mbimg;
+        this.url = url;
         this.isShow = isShow;
         this.sortID = sortID;
         this.addTime = addTime;
         this.updateTime = updateTime;
-    }
-
-    public CaseImg() {
     }
 }

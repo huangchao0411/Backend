@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Company implements Serializable {
+public class CompanyEntity implements Serializable {
 
     private Integer id;
     private Integer cateId;
@@ -33,10 +33,10 @@ public class Company implements Serializable {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Company)) {
+        } else if (!(o instanceof CompanyEntity)) {
             return false;
         } else {
-            Company other = (Company)o;
+            CompanyEntity other = (CompanyEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getSortID() != other.getSortID()) {
@@ -240,7 +240,7 @@ public class Company implements Serializable {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Company;
+        return other instanceof CompanyEntity;
     }
 
     public int hashCode() {
@@ -293,7 +293,7 @@ public class Company implements Serializable {
         return "Company(id=" + this.getId() + ", cateId=" + this.getCateId() + ", name=" + this.getName() + ", title=" + this.getTitle() + ", zhaiyao=" + this.getZhaiyao() + ", subContent=" + this.getSubContent() + ", content=" + this.getContent() + ", mbcontent=" + this.getMbcontent() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", case1=" + this.getCase1() + ", case2=" + this.getCase2() + ", case3=" + this.getCase3() + ", person=" + this.getPerson() + ", job=" + this.getJob() + ", pimg=" + this.getPimg() + ", history=" + this.getHistory() + ", sortID=" + this.getSortID() + ", isShow=" + this.getIsShow() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Company(Integer id, Integer cateId, String name, String title, String zhaiyao, String subContent, String content, String mbcontent, String img, String mbimg, String case1, String case2, String case3, String person, String job, String pimg, String history, int sortID, short isShow, LocalDateTime addTime, LocalDateTime updateTime) {
+    public CompanyEntity(Integer id, Integer cateId, String name, String title, String zhaiyao, String subContent, String content, String mbcontent, String img, String mbimg, String case1, String case2, String case3, String person, String job, String pimg, String history, int sortID, short isShow, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
         this.cateId = cateId;
         this.name = name;
@@ -317,6 +317,6 @@ public class Company implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Company() {
+    public CompanyEntity() {
     }
 }

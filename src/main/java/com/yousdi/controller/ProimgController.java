@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Proimg;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.ProimgEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ProimgService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ public class ProimgController {
         log.info("查询所有图片");
 
         try {
-            List<Proimg> proimgs = this.proimgService.proimgList(pid);
-            return Result.success(proimgs);
+            List<ProimgEntity> proimgEntities = this.proimgService.proimgList(pid);
+            return Result.success(proimgEntities);
         } catch (Exception ex) {
             return Result.error(ex.getMessage());
         }
@@ -45,19 +45,19 @@ public class ProimgController {
         log.info("查询图片id：{}", id);
 
         try {
-            Proimg proimg = this.proimgService.proimgById(id);
-            return Result.success(proimg);
+            ProimgEntity proimgEntity = this.proimgService.proimgById(id);
+            return Result.success(proimgEntity);
         } catch (Exception ex) {
             return Result.error(ex.getMessage());
         }
     }
 
     @PostMapping
-    public Result addProimg(@RequestBody List<Proimg> proimgs) {
-        log.info("添加图片：{}", proimgs);
+    public Result addProimg(@RequestBody List<ProimgEntity> proimgEntities) {
+        log.info("添加图片：{}", proimgEntities);
 
         try {
-            this.proimgService.addProimg(proimgs);
+            this.proimgService.addProimg(proimgEntities);
             return Result.success("添加成功！");
         } catch (Exception ex) {
             return Result.error("添加失败：" + ex.getMessage());
@@ -65,11 +65,11 @@ public class ProimgController {
     }
 
     @PutMapping
-    public Result updateProimg(@RequestBody Proimg proimg) {
-        log.info("修改图片：{}", proimg);
+    public Result updateProimg(@RequestBody ProimgEntity proimgEntity) {
+        log.info("修改图片：{}", proimgEntity);
 
         try {
-            this.proimgService.updateProimg(proimg);
+            this.proimgService.updateProimg(proimgEntity);
             return Result.success();
         } catch (Exception ex) {
             return Result.error(ex.getMessage());

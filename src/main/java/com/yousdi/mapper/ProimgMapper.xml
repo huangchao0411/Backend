@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yusdi.mapper.ProimgMapper">
-    <select id="prolist" resultType="com.yousdi.entity.Proimg">
+    <select id="prolist" resultType="com.yousdi.entity.ProimgEntity">
         SELECT * FROM product_imgs WHERE pid = #{pid} and isShow = 1;
     </select>
-    <select id="proimgById" resultType="com.yousdi.entity.Proimg">
+    <select id="proimgById" resultType="com.yousdi.entity.ProimgEntity">
         SELECT * FROM product_imgs WHERE id = #{id} AND isShow = 1;
     </select>
-    <insert id="addProimg" parameterType="com.yousdi.entity.Proimg">
+    <insert id="addProimg" parameterType="com.yousdi.entity.ProimgEntity">
         INSERT INTO product_imgs(pid, img, addTime, updateTime) VALUES
-        <foreach collection="proimgs" item="proimg" separator=",">
-            (#{proimg.pid}, #{proimg.img}, #{proimg.addTime}, #{proimg.updateTime})
+        <foreach collection="proimgEntities" item="proimgEntity" separator=",">
+            (#{proimgEntity.pid}, #{proimgEntity.img}, #{proimgEntity.addTime}, #{proimgEntity.updateTime})
         </foreach>
     </insert>
-    <update id="updateProimg" parameterType="com.yousdi.entity.Proimg">
+    <update id="updateProimg" parameterType="com.yousdi.entity.ProimgEntity">
         UPDATE product_imgs SET pid = #{pid}, img = #{img}, updateTime = #{updateTime} WHERE id = #{id};
     </update>
     <update id="delProimg" parameterType="Integer">

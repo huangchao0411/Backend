@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Contact;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.ContactEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.ContactService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ public class ContactController {
         log.info("contactlist");
 
         try {
-            List<Contact> contactList = this.contactService.contactList(isHot);
-            return Result.success(contactList);
+            List<ContactEntity> contactEntityList = this.contactService.contactList(isHot);
+            return Result.success(contactEntityList);
         } catch (Exception ex) {
             return Result.error("获取失败：" + ex.getMessage());
         }
@@ -45,19 +45,19 @@ public class ContactController {
         log.info("contactByID");
 
         try {
-            Contact contact = this.contactService.contactById(id);
-            return Result.success(contact);
+            ContactEntity contactEntity = this.contactService.contactById(id);
+            return Result.success(contactEntity);
         } catch (Exception ex) {
             return Result.error("获取失败：" + ex.getMessage());
         }
     }
 
     @PostMapping
-    public Result addContact(Contact contact) {
-        log.info("addContact：" + contact);
+    public Result addContact(ContactEntity contactEntity) {
+        log.info("addContact：" + contactEntity);
 
         try {
-            this.contactService.addContact(contact);
+            this.contactService.addContact(contactEntity);
             return Result.success("添加成功");
         } catch (Exception ex) {
             return Result.error("添加失败：" + ex.getMessage());
@@ -65,11 +65,11 @@ public class ContactController {
     }
 
     @PutMapping
-    public Result updateContact(@RequestBody Contact contact) {
-        log.info("updateContact:" + contact);
+    public Result updateContact(@RequestBody ContactEntity contactEntity) {
+        log.info("updateContact:" + contactEntity);
 
         try {
-            this.contactService.updateContact(contact);
+            this.contactService.updateContact(contactEntity);
             return Result.success("修改成功");
         } catch (Exception ex) {
             return Result.error("修改失败:" + ex.getMessage());

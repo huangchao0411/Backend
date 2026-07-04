@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Message;
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.MessageEntity;
+import com.yousdi.utils.PageBean;
+import com.yousdi.utils.Result;
 import com.yousdi.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,16 +39,16 @@ public class MessageController {
 
     @GetMapping({"/info"})
     public Result addMessage(@RequestParam String company, @RequestParam String person, @RequestParam String phone, @RequestParam String email, @RequestParam String content) {
-        Message message = new Message();
-        message.setCompany(company);
-        message.setPerson(person);
-        message.setPhone(phone);
-        message.setEmail(email);
-        message.setContent(content);
-        log.info("addMessage：{}", message);
+        MessageEntity messageEntity = new MessageEntity();
+        messageEntity.setCompany(company);
+        messageEntity.setPerson(person);
+        messageEntity.setPhone(phone);
+        messageEntity.setEmail(email);
+        messageEntity.setContent(content);
+        log.info("addMessage：{}", messageEntity);
 
         try {
-            this.messageService.addMessage(message);
+            this.messageService.addMessage(messageEntity);
             return Result.success("添加成功！");
         } catch (Exception e) {
             return Result.error("添加失败：" + e.getMessage());
@@ -56,11 +56,11 @@ public class MessageController {
     }
 
     @PutMapping
-    public Result updateMessage(@RequestBody Message message) {
-        log.info("updateMessage：{}", message);
+    public Result updateMessage(@RequestBody MessageEntity messageEntity) {
+        log.info("updateMessage：{}", messageEntity);
 
         try {
-            this.messageService.updateMessage(message);
+            this.messageService.updateMessage(messageEntity);
             return Result.success("修改成功！");
         } catch (Exception e) {
             return Result.error("修改失败：" + e.getMessage());

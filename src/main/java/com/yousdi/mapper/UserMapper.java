@@ -1,6 +1,7 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Password;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.PasswordEntity;
 import com.yousdi.entity.UserEntity;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<UserEntity> {
     void addUser(UserEntity var1);
 
     void modifyUser(UserEntity var1);
@@ -21,5 +22,5 @@ public interface UserMapper {
 
     void delUser(@Param("id") Integer var1, @Param("isLock") Integer var2);
 
-    void modifyUserPsd(Password var1);
+    void modifyUserPsd(PasswordEntity var1);
 }

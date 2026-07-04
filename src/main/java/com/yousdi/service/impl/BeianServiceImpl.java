@@ -1,23 +1,22 @@
 package com.yousdi.service.impl;
 
-import com.yousdi.mapper.BeianMapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yousdi.entity.BeianEntity;
+import com.yousdi.mapper.BeianMapper;
 import com.yousdi.service.BeianService;
-import java.time.LocalDateTime;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
-public class BeianServiceImpl implements BeianService {
-    @Autowired
-    private BeianMapper beianMapper;
+public class BeianServiceImpl extends ServiceImpl<BeianMapper, BeianEntity> implements BeianService {
 
     public BeianEntity getBeian() {
-        return this.beianMapper.getBeian();
+        return baseMapper.getBeian();
     }
 
     public void updateBeian(BeianEntity beian) {
         beian.setUpdateTime(LocalDateTime.now());
-        this.beianMapper.updateBeian(beian);
+        baseMapper.updateBeian(beian);
     }
 }

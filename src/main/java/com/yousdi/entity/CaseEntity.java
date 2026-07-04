@@ -2,46 +2,36 @@ package com.yousdi.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class News implements Serializable {
+public class CaseEntity {
 
     private Integer id;
+    private String title;
     private Integer categoryID;
     private String categoryName;
-    private String title;
+    private String subTitle;
     private String img;
-    private String mbimg;
+    private Integer isShow;
     private String zhaiyao;
     private String content;
     private String mbcontent;
-    private String url;
-    private short isShow;
-    private short isHot;
-    private short isRed;
+    private Integer sortID;
     private String SEOTitle;
     private String SEOKeywords;
     private String SEODescription;
-    private Integer sortID;
     private LocalDateTime addTime;
     private LocalDateTime updateTime;
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof News)) {
+        } else if (!(o instanceof CaseEntity)) {
             return false;
         } else {
-            News other = (News)o;
+            CaseEntity other = (CaseEntity)o;
             if (!other.canEqual(this)) {
-                return false;
-            } else if (this.getIsShow() != other.getIsShow()) {
-                return false;
-            } else if (this.getIsHot() != other.getIsHot()) {
-                return false;
-            } else if (this.getIsRed() != other.getIsRed()) {
                 return false;
             } else {
                 Object this$id = this.getId();
@@ -64,6 +54,16 @@ public class News implements Serializable {
                     return false;
                 }
 
+                Object this$isShow = this.getIsShow();
+                Object other$isShow = other.getIsShow();
+                if (this$isShow == null) {
+                    if (other$isShow != null) {
+                        return false;
+                    }
+                } else if (!this$isShow.equals(other$isShow)) {
+                    return false;
+                }
+
                 Object this$sortID = this.getSortID();
                 Object other$sortID = other.getSortID();
                 if (this$sortID == null) {
@@ -71,16 +71,6 @@ public class News implements Serializable {
                         return false;
                     }
                 } else if (!this$sortID.equals(other$sortID)) {
-                    return false;
-                }
-
-                Object this$categoryName = this.getCategoryName();
-                Object other$categoryName = other.getCategoryName();
-                if (this$categoryName == null) {
-                    if (other$categoryName != null) {
-                        return false;
-                    }
-                } else if (!this$categoryName.equals(other$categoryName)) {
                     return false;
                 }
 
@@ -94,6 +84,26 @@ public class News implements Serializable {
                     return false;
                 }
 
+                Object this$categoryName = this.getCategoryName();
+                Object other$categoryName = other.getCategoryName();
+                if (this$categoryName == null) {
+                    if (other$categoryName != null) {
+                        return false;
+                    }
+                } else if (!this$categoryName.equals(other$categoryName)) {
+                    return false;
+                }
+
+                Object this$subTitle = this.getSubTitle();
+                Object other$subTitle = other.getSubTitle();
+                if (this$subTitle == null) {
+                    if (other$subTitle != null) {
+                        return false;
+                    }
+                } else if (!this$subTitle.equals(other$subTitle)) {
+                    return false;
+                }
+
                 Object this$img = this.getImg();
                 Object other$img = other.getImg();
                 if (this$img == null) {
@@ -101,16 +111,6 @@ public class News implements Serializable {
                         return false;
                     }
                 } else if (!this$img.equals(other$img)) {
-                    return false;
-                }
-
-                Object this$mbimg = this.getMbimg();
-                Object other$mbimg = other.getMbimg();
-                if (this$mbimg == null) {
-                    if (other$mbimg != null) {
-                        return false;
-                    }
-                } else if (!this$mbimg.equals(other$mbimg)) {
                     return false;
                 }
 
@@ -141,16 +141,6 @@ public class News implements Serializable {
                         return false;
                     }
                 } else if (!this$mbcontent.equals(other$mbcontent)) {
-                    return false;
-                }
-
-                Object this$url = this.getUrl();
-                Object other$url = other.getUrl();
-                if (this$url == null) {
-                    if (other$url != null) {
-                        return false;
-                    }
-                } else if (!this$url.equals(other$url)) {
                     return false;
                 }
 
@@ -210,37 +200,34 @@ public class News implements Serializable {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof News;
+        return other instanceof CaseEntity;
     }
 
     public int hashCode() {
         int PRIME = 59;
         int result = 1;
-        result = result * 59 + this.getIsShow();
-        result = result * 59 + this.getIsHot();
-        result = result * 59 + this.getIsRed();
         Object $id = this.getId();
         result = result * 59 + ($id == null ? 43 : $id.hashCode());
         Object $categoryID = this.getCategoryID();
         result = result * 59 + ($categoryID == null ? 43 : $categoryID.hashCode());
+        Object $isShow = this.getIsShow();
+        result = result * 59 + ($isShow == null ? 43 : $isShow.hashCode());
         Object $sortID = this.getSortID();
         result = result * 59 + ($sortID == null ? 43 : $sortID.hashCode());
-        Object $categoryName = this.getCategoryName();
-        result = result * 59 + ($categoryName == null ? 43 : $categoryName.hashCode());
         Object $title = this.getTitle();
         result = result * 59 + ($title == null ? 43 : $title.hashCode());
+        Object $categoryName = this.getCategoryName();
+        result = result * 59 + ($categoryName == null ? 43 : $categoryName.hashCode());
+        Object $subTitle = this.getSubTitle();
+        result = result * 59 + ($subTitle == null ? 43 : $subTitle.hashCode());
         Object $img = this.getImg();
         result = result * 59 + ($img == null ? 43 : $img.hashCode());
-        Object $mbimg = this.getMbimg();
-        result = result * 59 + ($mbimg == null ? 43 : $mbimg.hashCode());
         Object $zhaiyao = this.getZhaiyao();
         result = result * 59 + ($zhaiyao == null ? 43 : $zhaiyao.hashCode());
         Object $content = this.getContent();
         result = result * 59 + ($content == null ? 43 : $content.hashCode());
         Object $mbcontent = this.getMbcontent();
         result = result * 59 + ($mbcontent == null ? 43 : $mbcontent.hashCode());
-        Object $url = this.getUrl();
-        result = result * 59 + ($url == null ? 43 : $url.hashCode());
         Object $SEOTitle = this.getSEOTitle();
         result = result * 59 + ($SEOTitle == null ? 43 : $SEOTitle.hashCode());
         Object $SEOKeywords = this.getSEOKeywords();
@@ -255,31 +242,28 @@ public class News implements Serializable {
     }
 
     public String toString() {
-        return "News(id=" + this.getId() + ", categoryID=" + this.getCategoryID() + ", categoryName=" + this.getCategoryName() + ", title=" + this.getTitle() + ", img=" + this.getImg() + ", mbimg=" + this.getMbimg() + ", zhaiyao=" + this.getZhaiyao() + ", content=" + this.getContent() + ", mbcontent=" + this.getMbcontent() + ", url=" + this.getUrl() + ", isShow=" + this.getIsShow() + ", isHot=" + this.getIsHot() + ", isRed=" + this.getIsRed() + ", SEOTitle=" + this.getSEOTitle() + ", SEOKeywords=" + this.getSEOKeywords() + ", SEODescription=" + this.getSEODescription() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
+        return "Case(id=" + this.getId() + ", title=" + this.getTitle() + ", categoryID=" + this.getCategoryID() + ", categoryName=" + this.getCategoryName() + ", subTitle=" + this.getSubTitle() + ", img=" + this.getImg() + ", isShow=" + this.getIsShow() + ", zhaiyao=" + this.getZhaiyao() + ", content=" + this.getContent() + ", mbcontent=" + this.getMbcontent() + ", sortID=" + this.getSortID() + ", SEOTitle=" + this.getSEOTitle() + ", SEOKeywords=" + this.getSEOKeywords() + ", SEODescription=" + this.getSEODescription() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public News() {
-    }
-
-    public News(Integer id, Integer categoryID, String categoryName, String title, String img, String mbimg, String zhaiyao, String content, String mbcontent, String url, short isShow, short isHot, short isRed, String SEOTitle, String SEOKeywords, String SEODescription, Integer sortID, LocalDateTime addTime, LocalDateTime updateTime) {
+    public CaseEntity(Integer id, String title, Integer categoryID, String categoryName, String subTitle, String img, Integer isShow, String zhaiyao, String content, String mbcontent, Integer sortID, String SEOTitle, String SEOKeywords, String SEODescription, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
+        this.title = title;
         this.categoryID = categoryID;
         this.categoryName = categoryName;
-        this.title = title;
+        this.subTitle = subTitle;
         this.img = img;
-        this.mbimg = mbimg;
+        this.isShow = isShow;
         this.zhaiyao = zhaiyao;
         this.content = content;
         this.mbcontent = mbcontent;
-        this.url = url;
-        this.isShow = isShow;
-        this.isHot = isHot;
-        this.isRed = isRed;
+        this.sortID = sortID;
         this.SEOTitle = SEOTitle;
         this.SEOKeywords = SEOKeywords;
         this.SEODescription = SEODescription;
-        this.sortID = sortID;
         this.addTime = addTime;
         this.updateTime = updateTime;
+    }
+
+    public CaseEntity() {
     }
 }

@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Company;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.CompanyEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.CompanyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,19 +28,19 @@ public class CompanyController {
         log.info("company");
 
         try {
-            Company company = this.companyService.company();
-            return Result.success(company);
+            CompanyEntity companyEntity = this.companyService.company();
+            return Result.success(companyEntity);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PutMapping
-    public Result updateCompany(@RequestBody Company company) {
-        log.info("updateCompany：{}", company);
+    public Result updateCompany(@RequestBody CompanyEntity companyEntity) {
+        log.info("updateCompany：{}", companyEntity);
 
         try {
-            this.companyService.updateCompany(company);
+            this.companyService.updateCompany(companyEntity);
             return Result.success("修改成功");
         } catch (Exception e) {
             return Result.error("修改失败：" + e.getMessage());

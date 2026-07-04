@@ -1,44 +1,43 @@
 package com.yousdi.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yousdi.entity.ChannelEntity;
 import com.yousdi.mapper.ChannelMapper;
-import com.yousdi.entity.Channel;
 import com.yousdi.service.ChannelService;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 @DS("master")
-public class ChannelServiceImpl implements ChannelService {
-    @Autowired
-    private ChannelMapper channelMapper;
+public class ChannelServiceImpl extends ServiceImpl<ChannelMapper, ChannelEntity> implements ChannelService {
 
-    public List<Channel> channelList(Integer isHeader, Integer isFooter) {
-        return this.channelMapper.channelList(isHeader, isFooter);
+    public List<ChannelEntity> channelList(Integer isHeader, Integer isFooter) {
+        return baseMapper.channelList(isHeader, isFooter);
     }
 
-    public Channel getChannelById(Integer id) {
-        return this.channelMapper.channelById(id);
+    public ChannelEntity getChannelById(Integer id) {
+        return baseMapper.channelById(id);
     }
 
-    public Channel getChannelByName(String name) {
-        return this.channelMapper.getChannelByName(name);
+    public ChannelEntity getChannelByName(String name) {
+        return baseMapper.getChannelByName(name);
     }
 
-    public void updateChannel(Channel c) {
+    public void updateChannel(ChannelEntity c) {
         c.setUpdateTime(LocalDateTime.now());
-        this.channelMapper.updateChannel(c);
+        baseMapper.updateChannel(c);
     }
 
-    public void addChannel(Channel c) {
+    public void addChannel(ChannelEntity c) {
         c.setAddTime(LocalDateTime.now());
         c.setUpdateTime(LocalDateTime.now());
-        this.channelMapper.addChannel(c);
+        baseMapper.addChannel(c);
     }
 
     public void deleteChannel(Integer id) {
-        this.channelMapper.delChannel(id);
+        baseMapper.delChannel(id);
     }
 }

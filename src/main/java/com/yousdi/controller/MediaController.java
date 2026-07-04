@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Media;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.MediaEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.MediaService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ public class MediaController {
         log.info("media");
 
         try {
-            List<Media> mediaList = this.mediaService.media(isShare);
-            return Result.success(mediaList);
+            List<MediaEntity> mediaEntityList = this.mediaService.media(isShare);
+            return Result.success(mediaEntityList);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
@@ -45,19 +45,19 @@ public class MediaController {
         log.info("getMediaById： {}", id);
 
         try {
-            Media mediaById = this.mediaService.getMediaById(id);
-            return Result.success(mediaById);
+            MediaEntity mediaEntityById = this.mediaService.getMediaById(id);
+            return Result.success(mediaEntityById);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PostMapping
-    public Result addMedia(@RequestBody Media media) {
-        log.info("addMedia：{}", media);
+    public Result addMedia(@RequestBody MediaEntity mediaEntity) {
+        log.info("addMedia：{}", mediaEntity);
 
         try {
-            this.mediaService.addMedia(media);
+            this.mediaService.addMedia(mediaEntity);
             return Result.success("修改成功");
         } catch (Exception e) {
             return Result.error("修改失败：" + e.getMessage());
@@ -65,11 +65,11 @@ public class MediaController {
     }
 
     @PutMapping
-    public Result updateMedia(@RequestBody Media media) {
-        log.info("updateMedia：{}", media);
+    public Result updateMedia(@RequestBody MediaEntity mediaEntity) {
+        log.info("updateMedia：{}", mediaEntity);
 
         try {
-            this.mediaService.updateMedia(media);
+            this.mediaService.updateMedia(mediaEntity);
             return Result.success("修改成功");
         } catch (Exception e) {
             return Result.error("修改失败：" + e.getMessage());

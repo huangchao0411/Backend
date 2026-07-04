@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yusdi.mapper.CaseMapper">
-    <select id="caseList" resultType="com.yousdi.entity.Case">
+    <select id="caseList" resultType="com.yousdi.entity.CaseEntity">
         select * from ysdi_web_db.case where isShow = 1
         <if test="categoryID != null">
             and categoryID = #{categoryID}
@@ -11,13 +11,13 @@
         </if>
         order by sortID, updateTime desc
     </select>
-    <select id="caseById" resultType="com.yousdi.entity.Case">
+    <select id="caseEntityById" resultType="com.yousdi.entity.CaseEntity">
         select * from ysdi_web_db.case where id = #{id}
     </select>
-    <update id="updateCase" parameterType="com.yousdi.entity.Case">
+    <update id="updateCase" parameterType="com.yousdi.entity.CaseEntity">
         update ysdi_web_db.case set title = #{title}, categoryID = #{categoryID},categoryName=#{categoryName}, subTitle = #{subTitle}, img = #{img}, zhaiyao=#{zhaiyao}, content = #{content}, mbcontent = #{mbcontent},sortID = #{sortID}, SEOTitle = #{SEOTitle}, SEOKeywords = #{SEOKeywords}, SEODescription = #{SEODescription}, updateTime = #{updateTime} where id = #{id}
     </update>
-    <insert id="addCase" parameterType="com.yousdi.entity.Case">
+    <insert id="addCase" parameterType="com.yousdi.entity.CaseEntity">
         insert into ysdi_web_db.case (title, categoryID, categoryName, subTitle, img, zhaiyao,content, mbcontent, sortID, SEOTitle, SEOKeywords, SEODescription,addTime, updateTime) values (#{title}, #{categoryID},#{categoryName}, #{subTitle}, #{img},#{zhaiyao}, #{content}, #{mbcontent}, #{sortID}, #{SEOTitle}, #{SEOKeywords}, #{SEODescription}, #{addTime}, #{updateTime})
     </insert>
     <update id="delCase" parameterType="integer">

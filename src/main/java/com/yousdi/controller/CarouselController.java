@@ -1,7 +1,7 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Carousel;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.CarouselEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.CarouselService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -30,8 +30,8 @@ public class CarouselController {
     @GetMapping
     public Result carousel() {
         log.info("carousel");
-        List<Carousel> carousels = this.carouselService.carousel();
-        return Result.success(carousels);
+        List<CarouselEntity> carouselEntities = this.carouselService.carousel();
+        return Result.success(carouselEntities);
     }
 
     @GetMapping({"/{id}"})
@@ -41,11 +41,11 @@ public class CarouselController {
     }
 
     @PostMapping
-    public Result addCarousel(@RequestBody Carousel carousel) {
-        log.info("addCarousel： {}", carousel);
+    public Result addCarousel(@RequestBody CarouselEntity carouselEntity) {
+        log.info("addCarousel： {}", carouselEntity);
 
         try {
-            this.carouselService.addCarousel(carousel);
+            this.carouselService.addCarousel(carouselEntity);
             return Result.success("添加成功");
         } catch (Exception e) {
             String mgs = e.getMessage();
@@ -54,11 +54,11 @@ public class CarouselController {
     }
 
     @PutMapping
-    public Result updateCarousel(@RequestBody Carousel carousel) {
-        log.info("updateCarousel： {}", carousel);
+    public Result updateCarousel(@RequestBody CarouselEntity carouselEntity) {
+        log.info("updateCarousel： {}", carouselEntity);
 
         try {
-            this.carouselService.updateCarousel(carousel);
+            this.carouselService.updateCarousel(carouselEntity);
             return Result.success("修改成功");
         } catch (Exception e) {
             String mgs = e.getMessage();

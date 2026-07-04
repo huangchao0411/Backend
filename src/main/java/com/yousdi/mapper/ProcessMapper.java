@@ -1,18 +1,21 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Process;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.ProcessEntity;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface ProcessMapper {
-    List<Process> process();
+public interface ProcessMapper extends BaseMapper<ProcessEntity> {
 
-    Process getProcessByID(Integer var1);
+    List<ProcessEntity> process();
 
-    void addProcess(Process var1);
+    ProcessEntity getProcessByID(Integer var1);
 
-    void updateProcess(Process var1);
+    void addProcess(ProcessEntity var1);
+
+    void updateProcess(ProcessEntity var1);
 
     void delProcess(Integer var1);
+
 }

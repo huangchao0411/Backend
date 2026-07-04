@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yusdi.mapper.MediaMapper">
-    <select id="media" resultType="com.yousdi.entity.Media">
-        select * from media where
+    <select id="mediaEntity" resultType="com.yousdi.entity.MediaEntity">
+        select * from mediaEntity where
         <if test="isShare != null">
             isShare = #{isShare} and
         </if>
         isShow = 1 order by sortID;
     </select>
-    <select id="getMediaById" resultType="com.yousdi.entity.Media">
-        select * from media where id = #{id}
+    <select id="getMediaById" resultType="com.yousdi.entity.MediaEntity">
+        select * from mediaEntity where id = #{id}
     </select>
-    <update id="updateMedia" parameterType="com.yousdi.entity.Media">
-        update media set name = #{name}, url = #{url}, img = #{img}, sortID = #{sortID}, updateTime = #{updateTime} where id = #{id}
+    <update id="updateMedia" parameterType="com.yousdi.entity.MediaEntity">
+        update mediaEntity set name = #{name}, url = #{url}, img = #{img}, sortID = #{sortID}, updateTime = #{updateTime} where id = #{id}
     </update>
-    <insert id="addMedia" parameterType="com.yousdi.entity.Media">
-        insert into media (name, url, img, sortID,isShare, addTime, updateTime) values (#{name}, #{url}, #{img}, #{sortID}, #{isShare},#{addTime},#{updateTime})
+    <insert id="addMedia" parameterType="com.yousdi.entity.MediaEntity">
+        insert into mediaEntity (name, url, img, sortID,isShare, addTime, updateTime) values (#{name}, #{url}, #{img}, #{sortID}, #{isShare},#{addTime},#{updateTime})
     </insert>
     <update id="delMedia">
-        update media set isShow = 0 where id IN
+        update mediaEntity set isShow = 0 where id IN
         <foreach collection="ids" item="id" index="index" separator="," close=")" open="(">
             #{id}
         </foreach>

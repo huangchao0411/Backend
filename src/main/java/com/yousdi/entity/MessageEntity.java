@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Message {
+public class MessageEntity {
 
     private Integer id;
     private String company;
@@ -20,10 +20,10 @@ public class Message {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Message)) {
+        } else if (!(o instanceof MessageEntity)) {
             return false;
         } else {
-            Message other = (Message)o;
+            MessageEntity other = (MessageEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -123,7 +123,7 @@ public class Message {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Message;
+        return other instanceof MessageEntity;
     }
 
     public int hashCode() {
@@ -154,10 +154,10 @@ public class Message {
         return "Message(id=" + this.getId() + ", company=" + this.getCompany() + ", person=" + this.getPerson() + ", phone=" + this.getPhone() + ", email=" + this.getEmail() + ", content=" + this.getContent() + ", isShow=" + this.getIsShow() + ", isCall=" + this.getIsCall() + ", addTime=" + this.getAddTime() + ")";
     }
 
-    public Message() {
+    public MessageEntity() {
     }
 
-    public Message(Integer id, String company, String person, String phone, String email, String content, Integer isShow, Integer isCall, LocalDateTime addTime) {
+    public MessageEntity(Integer id, String company, String person, String phone, String email, String content, Integer isShow, Integer isCall, LocalDateTime addTime) {
         this.id = id;
         this.company = company;
         this.person = person;

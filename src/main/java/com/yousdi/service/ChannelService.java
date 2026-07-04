@@ -1,18 +1,20 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.Channel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.ChannelEntity;
+
 import java.util.List;
 
-public interface ChannelService {
-    List<Channel> channelList(Integer var1, Integer var2);
+public interface ChannelService extends IService<ChannelEntity> {
+    List<ChannelEntity> channelList(Integer var1, Integer var2);
 
-    Channel getChannelById(Integer var1);
+    ChannelEntity getChannelById(Integer var1);
 
-    Channel getChannelByName(String var1);
+    ChannelEntity getChannelByName(String var1);
 
-    void updateChannel(Channel var1);
+    void updateChannel(ChannelEntity var1);
 
-    void addChannel(Channel var1);
+    void addChannel(ChannelEntity var1);
 
     void deleteChannel(Integer var1);
 }

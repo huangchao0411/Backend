@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Contact implements Serializable {
+public class ContactEntity implements Serializable {
 
     private Integer id;
     private Integer categoryID;
@@ -28,10 +28,10 @@ public class Contact implements Serializable {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Contact)) {
+        } else if (!(o instanceof ContactEntity)) {
             return false;
         } else {
-            Contact other = (Contact)o;
+            ContactEntity other = (ContactEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getSortID() != other.getSortID()) {
@@ -177,7 +177,7 @@ public class Contact implements Serializable {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Contact;
+        return other instanceof ContactEntity;
     }
 
     public int hashCode() {
@@ -219,10 +219,10 @@ public class Contact implements Serializable {
         return "Contact(id=" + this.getId() + ", categoryID=" + this.getCategoryID() + ", subtitle=" + this.getSubtitle() + ", title=" + this.getTitle() + ", img=" + this.getImg() + ", case1=" + this.getCase1() + ", case2=" + this.getCase2() + ", case3=" + this.getCase3() + ", case4=" + this.getCase4() + ", case5=" + this.getCase5() + ", case6=" + this.getCase6() + ", sortID=" + this.getSortID() + ", isShow=" + this.getIsShow() + ", isHot=" + this.getIsHot() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Contact() {
+    public ContactEntity() {
     }
 
-    public Contact(Integer id, Integer categoryID, String subtitle, String title, String img, String case1, String case2, String case3, String case4, String case5, String case6, short sortID, short isShow, short isHot, LocalDateTime addTime, LocalDateTime updateTime) {
+    public ContactEntity(Integer id, Integer categoryID, String subtitle, String title, String img, String case1, String case2, String case3, String case4, String case5, String case6, short sortID, short isShow, short isHot, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
         this.categoryID = categoryID;
         this.subtitle = subtitle;

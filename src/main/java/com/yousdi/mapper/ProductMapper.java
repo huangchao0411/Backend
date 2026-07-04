@@ -1,19 +1,21 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Product;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.ProductEntity;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface ProductMapper {
-    List<Product> productList(@Param("categoryID") Integer var1, @Param("isHot") Integer var2, @Param("keyword") String var3);
+public interface ProductMapper extends BaseMapper<ProductEntity> {
+    List<ProductEntity> productList(@Param("categoryID") Integer var1, @Param("isHot") Integer var2, @Param("keyword") String var3);
 
-    Product productById(Integer var1);
+    ProductEntity productById(Integer var1);
 
-    Integer addProduct(Product var1);
+    Integer addProduct(ProductEntity var1);
 
-    void updateProduct(Product var1);
+    void updateProduct(ProductEntity var1);
 
     void delProduct(@Param("ids") List<Integer> var1);
 

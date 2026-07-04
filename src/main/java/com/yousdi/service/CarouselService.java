@@ -1,16 +1,18 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.Carousel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.CarouselEntity;
+
 import java.util.List;
 
-public interface CarouselService {
-    List<Carousel> carousel();
+public interface CarouselService extends IService<CarouselEntity> {
+    List<CarouselEntity> carousel();
 
-    void addCarousel(Carousel var1);
+    void addCarousel(CarouselEntity var1);
 
-    void updateCarousel(Carousel var1);
+    void updateCarousel(CarouselEntity var1);
 
-    Carousel getCarouselById(Integer var1);
+    CarouselEntity getCarouselById(Integer var1);
 
     void deleteCarousel(List<Integer> var1);
 }

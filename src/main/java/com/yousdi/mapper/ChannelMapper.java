@@ -1,21 +1,25 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Channel;
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.ChannelEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
-public interface ChannelMapper {
-    List<Channel> channelList(@Param("isHeader") Integer var1, @Param("isFooter") Integer var2);
+public interface ChannelMapper extends BaseMapper<ChannelEntity> {
 
-    Channel channelById(Integer var1);
+    List<ChannelEntity> channelList(@Param("isHeader") Integer var1, @Param("isFooter") Integer var2);
 
-    Channel getChannelByName(String var1);
+    ChannelEntity channelById(Integer var1);
 
-    void updateChannel(Channel var1);
+    ChannelEntity getChannelByName(String var1);
 
-    void addChannel(Channel var1);
+    void updateChannel(ChannelEntity var1);
+
+    void addChannel(ChannelEntity var1);
 
     void delChannel(Integer var1);
+
 }

@@ -1,8 +1,9 @@
 package com.yousdi.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yousdi.entity.ProimgEntity;
 import com.yousdi.mapper.ProimgMapper;
-import com.yousdi.entity.Proimg;
 import com.yousdi.service.ProimgService;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,33 +12,31 @@ import org.springframework.stereotype.Service;
 
 @Service
 @DS("master")
-public class ProimgServiceImpl implements ProimgService {
-    @Autowired
-    private ProimgMapper proimgMapper;
+public class ProimgServiceImpl extends ServiceImpl<ProimgMapper, ProimgEntity> implements ProimgService {
 
-    public List<Proimg> proimgList(Integer pid) {
-        return this.proimgMapper.prolist(pid);
+    public List<ProimgEntity> proimgList(Integer pid) {
+        return baseMapper.prolist(pid);
     }
 
-    public Proimg proimgById(Integer id) {
-        return this.proimgMapper.proimgById(id);
+    public ProimgEntity proimgById(Integer id) {
+        return baseMapper.proimgById(id);
     }
 
-    public void addProimg(List<Proimg> proimgs) {
-        for(Proimg proimg : proimgs) {
-            proimg.setAddTime(LocalDateTime.now());
-            proimg.setUpdateTime(LocalDateTime.now());
+    public void addProimg(List<ProimgEntity> proimgEntities) {
+        for(ProimgEntity proimgEntity : proimgEntities) {
+            proimgEntity.setAddTime(LocalDateTime.now());
+            proimgEntity.setUpdateTime(LocalDateTime.now());
         }
 
-        this.proimgMapper.addProimg(proimgs);
+        baseMapper.addProimg(proimgEntities);
     }
 
-    public void updateProimg(Proimg proimg) {
-        proimg.setUpdateTime(LocalDateTime.now());
-        this.proimgMapper.updateProimg(proimg);
+    public void updateProimg(ProimgEntity proimgEntity) {
+        proimgEntity.setUpdateTime(LocalDateTime.now());
+        baseMapper.updateProimg(proimgEntity);
     }
 
     public void deleteProimg(List<Integer> ids) {
-        this.proimgMapper.delProimg(ids);
+        baseMapper.delProimg(ids);
     }
 }

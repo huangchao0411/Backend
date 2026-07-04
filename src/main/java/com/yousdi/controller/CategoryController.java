@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.CaseImg;
-import com.yousdi.entity.Category;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.CaseImgEntity;
+import com.yousdi.entity.CategoryEntity;
+import com.yousdi.utils.Result;
 import com.yousdi.service.CategoryService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -34,8 +34,8 @@ public class CategoryController {
         log.info("categoryList");
 
         try {
-            List<Category> categoryList = this.categoryService.categoryList(channelID, isHeader, isFooter, id);
-            return Result.success(categoryList);
+            List<CategoryEntity> categoryEntityList = this.categoryService.categoryList(channelID, isHeader, isFooter, id);
+            return Result.success(categoryEntityList);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
@@ -46,19 +46,19 @@ public class CategoryController {
         log.info("getCategoryImgs");
 
         try {
-            List<CaseImg> caseImgList = this.categoryService.getCategoryImgs(categoryID, id);
-            return Result.success(caseImgList);
+            List<CaseImgEntity> caseImgEntityList = this.categoryService.getCategoryImgs(categoryID, id);
+            return Result.success(caseImgEntityList);
         } catch (Exception e) {
             return Result.error("获取失败：" + e.getMessage());
         }
     }
 
     @PutMapping({"/imgs"})
-    public Result updateCategoryImgs(@RequestBody CaseImg caseImg) {
-        log.info("updateCategoryImgs： {}", caseImg);
+    public Result updateCategoryImgs(@RequestBody CaseImgEntity caseImgEntity) {
+        log.info("updateCategoryImgs： {}", caseImgEntity);
 
         try {
-            this.categoryService.updateCategoryImgs(caseImg);
+            this.categoryService.updateCategoryImgs(caseImgEntity);
             return Result.success("修改成功");
         } catch (Exception e) {
             return Result.error("修改失败：" + e.getMessage());
@@ -66,11 +66,11 @@ public class CategoryController {
     }
 
     @PostMapping({"/imgs"})
-    public Result addCategoryImgs(@RequestBody CaseImg caseImg) {
-        log.info("addCategoryImgs： {}", caseImg);
+    public Result addCategoryImgs(@RequestBody CaseImgEntity caseImgEntity) {
+        log.info("addCategoryImgs： {}", caseImgEntity);
 
         try {
-            this.categoryService.addCategoryImgs(caseImg);
+            this.categoryService.addCategoryImgs(caseImgEntity);
             return Result.success("添加成功");
         } catch (Exception e) {
             return Result.error("添加失败：" + e.getMessage());
@@ -90,7 +90,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public Result addCategory(@RequestBody Category c) {
+    public Result addCategory(@RequestBody CategoryEntity c) {
         log.info("addCategory： {}", c);
 
         try {
@@ -102,7 +102,7 @@ public class CategoryController {
     }
 
     @PutMapping
-    public Result updateCategory(@RequestBody Category c) {
+    public Result updateCategory(@RequestBody CategoryEntity c) {
         log.info("updateCategory： {}", c);
 
         try {

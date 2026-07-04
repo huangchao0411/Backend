@@ -2,25 +2,26 @@ package com.yousdi.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Proimg implements Serializable {
+public class CaseImgEntity {
 
     private Integer id;
-    private Integer pid;
+    private Integer categoryID;
     private String img;
+    private Short isShow;
+    private Integer sortID;
     private LocalDateTime addTime;
     private LocalDateTime updateTime;
 
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Proimg)) {
+        } else if (!(o instanceof CaseImgEntity)) {
             return false;
         } else {
-            Proimg other = (Proimg)o;
+            CaseImgEntity other = (CaseImgEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -34,13 +35,33 @@ public class Proimg implements Serializable {
                     return false;
                 }
 
-                Object this$pid = this.getPid();
-                Object other$pid = other.getPid();
-                if (this$pid == null) {
-                    if (other$pid != null) {
+                Object this$categoryID = this.getCategoryID();
+                Object other$categoryID = other.getCategoryID();
+                if (this$categoryID == null) {
+                    if (other$categoryID != null) {
                         return false;
                     }
-                } else if (!this$pid.equals(other$pid)) {
+                } else if (!this$categoryID.equals(other$categoryID)) {
+                    return false;
+                }
+
+                Object this$isShow = this.getIsShow();
+                Object other$isShow = other.getIsShow();
+                if (this$isShow == null) {
+                    if (other$isShow != null) {
+                        return false;
+                    }
+                } else if (!this$isShow.equals(other$isShow)) {
+                    return false;
+                }
+
+                Object this$sortID = this.getSortID();
+                Object other$sortID = other.getSortID();
+                if (this$sortID == null) {
+                    if (other$sortID != null) {
+                        return false;
+                    }
+                } else if (!this$sortID.equals(other$sortID)) {
                     return false;
                 }
 
@@ -80,7 +101,7 @@ public class Proimg implements Serializable {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Proimg;
+        return other instanceof CaseImgEntity;
     }
 
     public int hashCode() {
@@ -88,8 +109,12 @@ public class Proimg implements Serializable {
         int result = 1;
         Object $id = this.getId();
         result = result * 59 + ($id == null ? 43 : $id.hashCode());
-        Object $pid = this.getPid();
-        result = result * 59 + ($pid == null ? 43 : $pid.hashCode());
+        Object $categoryID = this.getCategoryID();
+        result = result * 59 + ($categoryID == null ? 43 : $categoryID.hashCode());
+        Object $isShow = this.getIsShow();
+        result = result * 59 + ($isShow == null ? 43 : $isShow.hashCode());
+        Object $sortID = this.getSortID();
+        result = result * 59 + ($sortID == null ? 43 : $sortID.hashCode());
         Object $img = this.getImg();
         result = result * 59 + ($img == null ? 43 : $img.hashCode());
         Object $addTime = this.getAddTime();
@@ -100,17 +125,19 @@ public class Proimg implements Serializable {
     }
 
     public String toString() {
-        return "Proimg(id=" + this.getId() + ", pid=" + this.getPid() + ", img=" + this.getImg() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
+        return "CaseImg(id=" + this.getId() + ", categoryID=" + this.getCategoryID() + ", img=" + this.getImg() + ", isShow=" + this.getIsShow() + ", sortID=" + this.getSortID() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Proimg() {
-    }
-
-    public Proimg(Integer id, Integer pid, String img, LocalDateTime addTime, LocalDateTime updateTime) {
+    public CaseImgEntity(Integer id, Integer categoryID, String img, Short isShow, Integer sortID, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
-        this.pid = pid;
+        this.categoryID = categoryID;
         this.img = img;
+        this.isShow = isShow;
+        this.sortID = sortID;
         this.addTime = addTime;
         this.updateTime = updateTime;
+    }
+
+    public CaseImgEntity() {
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Service {
+public class ServiceEntity {
 
     private int id;
     private int categoryID;
@@ -20,10 +20,10 @@ public class Service {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Service)) {
+        } else if (!(o instanceof ServiceEntity)) {
             return false;
         } else {
-            Service other = (Service)o;
+            ServiceEntity other = (ServiceEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getId() != other.getId()) {
@@ -107,7 +107,7 @@ public class Service {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Service;
+        return other instanceof ServiceEntity;
     }
 
     public int hashCode() {
@@ -136,10 +136,10 @@ public class Service {
         return "Service(id=" + this.getId() + ", categoryID=" + this.getCategoryID() + ", title=" + this.getTitle() + ", name=" + this.getName() + ", content=" + this.getContent() + ", img=" + this.getImg() + ", isShow=" + this.getIsShow() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Service() {
+    public ServiceEntity() {
     }
 
-    public Service(int id, int categoryID, String title, String name, String content, String img, Short isShow, LocalDateTime addTime, LocalDateTime updateTime) {
+    public ServiceEntity(int id, int categoryID, String title, String name, String content, String img, Short isShow, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
         this.categoryID = categoryID;
         this.title = title;

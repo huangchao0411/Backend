@@ -1,25 +1,24 @@
 package com.yousdi.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yousdi.entity.CompanyEntity;
 import com.yousdi.mapper.CompanyMapper;
-import com.yousdi.entity.Company;
 import com.yousdi.service.CompanyService;
-import java.time.LocalDateTime;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @DS("master")
-public class CompanyServiceImpl implements CompanyService {
-    @Autowired
-    private CompanyMapper companyMapper;
+public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, CompanyEntity> implements CompanyService {
 
-    public Company company() {
-        return this.companyMapper.company();
+    public CompanyEntity company() {
+        return baseMapper.company();
     }
 
-    public void updateCompany(Company company) {
-        company.setUpdateTime(LocalDateTime.now());
-        this.companyMapper.updateCompany(company);
+    public void updateCompany(CompanyEntity companyEntity) {
+        companyEntity.setUpdateTime(LocalDateTime.now());
+        baseMapper.updateCompany(companyEntity);
     }
 }

@@ -1,8 +1,9 @@
 package com.yousdi.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yousdi.entity.CarouselEntity;
 import com.yousdi.mapper.CarouselMapper;
-import com.yousdi.entity.Carousel;
 import com.yousdi.service.CarouselService;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,31 +12,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 @DS("master")
-public class CarouselServiceImpl implements CarouselService {
-    @Autowired
-    private CarouselMapper carouselMapper;
+public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, CarouselEntity> implements CarouselService {
 
-    public List<Carousel> carousel() {
-        return this.carouselMapper.carousel();
+    public List<CarouselEntity> carousel() {
+        return baseMapper.carousel();
     }
 
-    public void addCarousel(Carousel carousel) {
-        carousel.setAddTime(LocalDateTime.now());
-        carousel.setUpdateTime(LocalDateTime.now());
-        this.carouselMapper.addCarousel(carousel);
+    public void addCarousel(CarouselEntity carouselEntity) {
+        carouselEntity.setAddTime(LocalDateTime.now());
+        carouselEntity.setUpdateTime(LocalDateTime.now());
+        baseMapper.addCarousel(carouselEntity);
     }
 
-    public void updateCarousel(Carousel carousel) {
-        carousel.setAddTime(LocalDateTime.now());
-        carousel.setUpdateTime(LocalDateTime.now());
-        this.carouselMapper.updateCarousel(carousel);
+    public void updateCarousel(CarouselEntity carouselEntity) {
+        carouselEntity.setAddTime(LocalDateTime.now());
+        carouselEntity.setUpdateTime(LocalDateTime.now());
+        baseMapper.updateCarousel(carouselEntity);
     }
 
-    public Carousel getCarouselById(Integer id) {
-        return this.carouselMapper.carouselById(id);
+    public CarouselEntity getCarouselById(Integer id) {
+        return baseMapper.carouselById(id);
     }
 
     public void deleteCarousel(List<Integer> ids) {
-        this.carouselMapper.delCarousel(ids);
+        baseMapper.delCarousel(ids);
     }
 }

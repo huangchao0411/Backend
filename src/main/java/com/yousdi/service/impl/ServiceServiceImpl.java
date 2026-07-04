@@ -1,6 +1,8 @@
 package com.yousdi.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yousdi.entity.ServiceEntity;
 import com.yousdi.mapper.ServiceMapper;
 import com.yousdi.service.ServiceService;
 import java.time.LocalDateTime;
@@ -10,30 +12,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 @DS("master")
-public class ServiceServiceImpl implements ServiceService {
-    @Autowired
-    private ServiceMapper serviceMapper;
+public class ServiceServiceImpl extends ServiceImpl<ServiceMapper, ServiceEntity> implements ServiceService {
 
-    public List<com.yousdi.entity.Service> service() {
-        return this.serviceMapper.service();
+    public List<ServiceEntity> service() {
+        return baseMapper.service();
     }
 
-    public com.yousdi.entity.Service getServiceById(Integer id) {
-        return this.serviceMapper.getServiceById(id);
+    public ServiceEntity getServiceById(Integer id) {
+        return baseMapper.getServiceById(id);
     }
 
-    public void addService(com.yousdi.entity.Service s) {
+    public void addService(ServiceEntity s) {
         s.setAddTime(LocalDateTime.now());
         s.setUpdateTime(LocalDateTime.now());
-        this.serviceMapper.addService(s);
+        baseMapper.addService(s);
     }
 
-    public void updateService(com.yousdi.entity.Service s) {
+    public void updateService(ServiceEntity s) {
         s.setUpdateTime(LocalDateTime.now());
-        this.serviceMapper.updateService(s);
+        baseMapper.updateService(s);
     }
 
     public void deleteService(Integer id) {
-        this.serviceMapper.deleteService(id);
+        baseMapper.deleteService(id);
     }
 }

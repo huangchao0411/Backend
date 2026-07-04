@@ -1,17 +1,18 @@
 package com.yousdi.service;
 
-import com.yousdi.entity.News;
-import com.yousdi.entity.PageBean;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yousdi.entity.NewsEntity;
+import com.yousdi.utils.PageBean;
 import java.util.List;
 
-public interface NewsService {
+public interface NewsService extends IService<NewsEntity> {
     PageBean newsList(Integer var1, Integer var2, Integer var3, Integer var4, String var5);
 
-    News getNewsById(Integer var1);
+    NewsEntity getNewsById(Integer var1);
 
-    void addNews(News var1);
+    void addNews(NewsEntity var1);
 
-    void updateNews(News var1);
+    void updateNews(NewsEntity var1);
 
     void deleteNews(List<Integer> var1);
 }

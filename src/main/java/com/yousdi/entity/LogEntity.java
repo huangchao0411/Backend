@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Log {
+public class LogEntity {
 
     private Integer id;
     private String userID;
@@ -17,10 +17,10 @@ public class Log {
     public boolean equals(Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof Log)) {
+        } else if (!(o instanceof LogEntity)) {
             return false;
         } else {
-            Log other = (Log)o;
+            LogEntity other = (LogEntity)o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -90,7 +90,7 @@ public class Log {
     }
 
     protected boolean canEqual(Object other) {
-        return other instanceof Log;
+        return other instanceof LogEntity;
     }
 
     public int hashCode() {
@@ -115,10 +115,10 @@ public class Log {
         return "Log(id=" + this.getId() + ", userID=" + this.getUserID() + ", username=" + this.getUsername() + ", content=" + this.getContent() + ", addTime=" + this.getAddTime() + ", updateTime=" + this.getUpdateTime() + ")";
     }
 
-    public Log() {
+    public LogEntity() {
     }
 
-    public Log(Integer id, String userID, String username, String content, LocalDateTime addTime, LocalDateTime updateTime) {
+    public LogEntity(Integer id, String userID, String username, String content, LocalDateTime addTime, LocalDateTime updateTime) {
         this.id = id;
         this.userID = userID;
         this.username = username;

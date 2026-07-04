@@ -1,11 +1,14 @@
 package com.yousdi.mapper;
 
-import com.yousdi.entity.Company;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yousdi.entity.CompanyEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface CompanyMapper {
-    Company company();
+public interface CompanyMapper extends BaseMapper<CompanyEntity> {
 
-    void updateCompany(Company var1);
+    CompanyEntity company();
+
+    void updateCompany(CompanyEntity var1);
+
 }

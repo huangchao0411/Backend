@@ -1,8 +1,8 @@
 package com.yousdi.controller;
 
-import com.yousdi.entity.Case;
-import com.yousdi.entity.PageBean;
-import com.yousdi.entity.Result;
+import com.yousdi.entity.CaseEntity;
+import com.yousdi.utils.PageBean;
+import com.yousdi.utils.Result;
 import com.yousdi.service.CaseService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -46,15 +46,15 @@ public class CaseController {
         log.info("getCaseById： {}", id);
 
         try {
-            Case caseById = this.caseService.getCaseById(id);
-            return Result.success(caseById);
+            CaseEntity caseEntityById = this.caseService.getCaseById(id);
+            return Result.success(caseEntityById);
         } catch (Exception e) {
             return Result.error("获取失败:" + e.getMessage());
         }
     }
 
     @PutMapping
-    public Result updateCase(@RequestBody Case c) {
+    public Result updateCase(@RequestBody CaseEntity c) {
         log.info("updateCase： {}", c);
 
         try {
@@ -66,7 +66,7 @@ public class CaseController {
     }
 
     @PostMapping
-    public Result addCase(@RequestBody Case c) {
+    public Result addCase(@RequestBody CaseEntity c) {
         log.info("addCase： {}", c);
 
         try {

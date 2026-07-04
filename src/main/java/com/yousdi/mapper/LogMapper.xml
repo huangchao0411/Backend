@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yusdi.mapper.LogMapper">
-    <insert id="insertLog" parameterType="com.yousdi.entity.Log">
-       insert into log(userID, username, content, addTime) values (#{userID}, #{username}, #{content}, #{addTime})
+    <insert id="insertLog" parameterType="com.yousdi.entity.LogEntity">
+       insert into logEntity(userID, username, content, addTime) values (#{userID}, #{username}, #{content}, #{addTime})
     </insert>
     <select id="logTotal" resultType="integer">
-        SELECT count(*) FROM log;
+        SELECT count(*) FROM logEntity;
     </select>
-    <select id="logList" resultType="com.yousdi.entity.Log">
-        SELECT id, userID, username, content, addTime FROM log order by addTime desc LIMIT #{pageSize} OFFSET #{params1} ;
+    <select id="logList" resultType="com.yousdi.entity.LogEntity">
+        SELECT id, userID, username, content, addTime FROM logEntity order by addTime desc LIMIT #{pageSize} OFFSET #{params1} ;
     </select>
 </mapper>
