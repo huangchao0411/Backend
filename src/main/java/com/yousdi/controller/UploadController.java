@@ -1,23 +1,22 @@
 package com.yousdi.controller;
 
-import cn.hutool.core.util.IdUtil;
-import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.yousdi.entity.Result;
 import com.yousdi.entity.UploadPath;
 import com.yousdi.entity.UploadResult;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(
