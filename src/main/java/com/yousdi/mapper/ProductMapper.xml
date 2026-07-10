@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.ProductMapper">
+<mapper namespace="com.yousdi.mapper.ProductMapper">
     <select id="productList" resultType="com.yousdi.entity.ProductEntity">
-        SELECT * FROM productEntities WHERE
+        SELECT * FROM products WHERE
                 <if test="categoryID != null">
                     categoryID=#{categoryID} and
                 </if>
@@ -15,28 +15,28 @@
                 isShow=1 order by sortID, updateTime desc
     </select>
     <select id="productById" resultType="com.yousdi.entity.ProductEntity">
-        SELECT * FROM productEntities WHERE id=#{id}
+        SELECT * FROM products WHERE id=#{id}
     </select>
     <insert id="addProduct" parameterType="com.yousdi.entity.ProductEntity" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO productEntities(categoryID, categoryName, title, subtitle, img, video, zhaiyao, params, content, mbcontent,
+        INSERT INTO products(categoryID, categoryName, title, subtitle, img, video, zhaiyao, params, content, mbcontent,
                 isHot, sortID, SEOTitle, SEOKeyWord, SEODescription, addTime, updateTime)
         VALUES(#{categoryID},#{categoryName} , #{title}, #{subtitle}, #{img}, #{video}, #{zhaiyao}, #{params}, #{content}, #{mbcontent},
                 #{isHot},#{sortID}, #{SEOTitle}, #{SEOKeyWord}, #{SEODescription},#{addTime}, #{updateTime})
     </insert>
     <update id="updateProduct" parameterType="com.yousdi.entity.ProductEntity">
-        UPDATE productEntities SET categoryID=#{categoryID},categoryName=#{categoryName}, title=#{title}, subtitle=#{subtitle},
+        UPDATE products SET categoryID=#{categoryID},categoryName=#{categoryName}, title=#{title}, subtitle=#{subtitle},
                 img=#{img}, video=#{video}, zhaiyao=#{zhaiyao}, params=#{params}, content=#{content}, mbcontent=#{mbcontent},
                 isHot=#{isHot}, sortID=#{sortID}, SEOTitle=#{SEOTitle}, SEOKeyWord=#{SEOKeyWord}, SEODescription=#{SEODescription},
                 updateTime=#{updateTime}
         WHERE id=#{id}
     </update>
     <update id="delProduct" parameterType="Integer">
-        UPDATE productEntities SET isShow=0 WHERE id IN
+        UPDATE products SET isShow=0 WHERE id IN
          <foreach item="id" index="index" collection="ids" separator="," open="(" close=")">
              #{id}
          </foreach>
     </update>
     <select id="productByHot" resultType="integer">
-        SELECT COUNT(id) from productEntities where isHot = 1 and isShow = 1;
+        SELECT COUNT(id) from products where isHot = 1 and isShow = 1;
     </select>
 </mapper>

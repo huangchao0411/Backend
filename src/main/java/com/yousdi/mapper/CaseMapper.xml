@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.CaseMapper">
+<mapper namespace="com.yousdi.mapper.CaseMapper">
     <select id="caseList" resultType="com.yousdi.entity.CaseEntity">
         select * from ysdi_web_db.case where isShow = 1
         <if test="categoryID != null">
@@ -11,7 +11,7 @@
         </if>
         order by sortID, updateTime desc
     </select>
-    <select id="caseEntityById" resultType="com.yousdi.entity.CaseEntity">
+    <select id="caseById" resultType="com.yousdi.entity.CaseEntity">
         select * from ysdi_web_db.case where id = #{id}
     </select>
     <update id="updateCase" parameterType="com.yousdi.entity.CaseEntity">

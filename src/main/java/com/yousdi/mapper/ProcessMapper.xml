@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.ProcessMapper">
-    <select id="processEntity" resultType="com.yousdi.entity.ProcessEntity">
-        select * from processEntity WHERE isShow = 1 ORDER BY sortID;
+<mapper namespace="com.yousdi.mapper.ProcessMapper">
+    <select id="process" resultType="com.yousdi.entity.ProcessEntity">
+        select * from process WHERE isShow = 1 ORDER BY sortID;
     </select>
 
     <select id="getProcessByID" resultType="com.yousdi.entity.ProcessEntity">
-        select * from processEntity WHERE id = #{id};
+        select * from process WHERE id = #{id};
     </select>
 
     <insert id="addProcess">
-        insert into processEntity(name, title, content,img, sortID, isShow, addTime, updateTime)
+        insert into process(name, title, content,img, sortID, isShow, addTime, updateTime)
         values(#{name}, #{title}, #{content}, #{img}, #{sortID}, #{isShow}, #{addTime}, #{updateTime})
     </insert>
     <update id="updateProcess">
-        update processEntity set  name = #{name}, title = #{title},  content = #{content}, img = #{img}, isShow = #{isShow}, sortID = #{sortID}, updateTime = #{updateTime} where id = #{id}
+        update process set  name = #{name}, title = #{title},  content = #{content}, img = #{img}, isShow = #{isShow}, sortID = #{sortID}, updateTime = #{updateTime} where id = #{id}
     </update>
     <update id="delProcess" parameterType="integer">
-        update processEntity set isShow = 0 where id = #{id}
+        update process set isShow = 0 where id = #{id}
     </update>
 </mapper>

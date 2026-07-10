@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.ProimgMapper">
+<mapper namespace="com.yousdi.mapper.ProimgMapper">
     <select id="prolist" resultType="com.yousdi.entity.ProimgEntity">
         SELECT * FROM product_imgs WHERE pid = #{pid} and isShow = 1;
     </select>

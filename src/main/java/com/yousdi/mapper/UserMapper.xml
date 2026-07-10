@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.UserMapper">
+<mapper namespace="com.yousdi.mapper.UserMapper">
     <insert id="addUser" parameterType="com.yousdi.entity.UserEntity">
         insert into manager(username, password, roleID, name, addTime, updateTime) values (#{username}, #{password}, #{roleID}, #{name},  #{addTime}, #{updateTime})
     </insert>

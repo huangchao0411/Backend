@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.NewsMapper">
-    <select id="newsEntityList" resultType="com.yousdi.entity.NewsEntity">
+<mapper namespace="com.yousdi.mapper.NewsMapper">
+    <select id="newsList" resultType="com.yousdi.entity.NewsEntity">
         select * from news where isShow = 1
          <if test="isHot != null">
             and isHot = #{isHot}

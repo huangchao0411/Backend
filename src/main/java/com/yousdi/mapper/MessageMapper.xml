@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.MessageMapper">
-    <select id="messageEntity" resultType="com.yousdi.entity.MessageEntity">
-        select * from messageEntity where isShow=1
+<mapper namespace="com.yousdi.mapper.MessageMapper">
+    <select id="message" resultType="com.yousdi.entity.MessageEntity">
+        select * from message where isShow=1
         <if test="keyword != null">
-               and (companyEntity like concat('%', #{keyword}, '%')
+               and (company like concat('%', #{keyword}, '%')
                or person like concat('%', #{keyword}, '%')
                or content like concat('%', #{keyword}, '%'))
         </if>
                  ORDER BY addTime desc
     </select>
     <insert id="addMessage" parameterType="com.yousdi.entity.MessageEntity">
-        insert into messageEntity(companyEntity, person, phone, email, content, isShow, addTime)
-        values(#{companyEntity},#{person}, #{phone}, #{email}, #{content}, #{isShow}, #{addTime})
+        insert into message(company, person, phone, email, content, isShow, addTime)
+        values(#{company},#{person}, #{phone}, #{email}, #{content}, #{isShow}, #{addTime})
     </insert>
     <update id="updateMessage" parameterType="com.yousdi.entity.MessageEntity">
-        update messageEntity set isCall=#{isCall}, isShow=#{isShow} where id=#{id}
+        update message set isCall=#{isCall}, isShow=#{isShow} where id=#{id}
     </update>
 </mapper>

@@ -1,7 +1,6 @@
 # 数据库连接
 server:
   port: 12059
-  address: 0.0.0.0  # 添加这行,确保监听所有网络接口
 spring:
   servlet:
     multipart:
@@ -24,17 +23,17 @@ spring:
         time-between-eviction-runs-millis: 60000
         min-evictable-idle-time-millis: 100000
       datasource:
-#        master:
-#          url: jdbc:mysql://127.0.0.1:3306/szyousidi_web_db
-#          driver-class-name: com.mysql.cj.jdbc.Driver
-#          username: root
-#          password: Pass@123
-
         master:
-          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_888_2017
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          username: sa
-          password: abc.123
+          url: jdbc:mysql://127.0.0.1:3306/szyousidi_web_db
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: Pass@123
+
+#        master:
+#          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_888_2017
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          username: sa
+#          password: abc.123
 #        db3:
 #          url: jdbc:sqlserver://172.16.10.133:1433;databaseName=UFDATA_016_2024
 #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -47,6 +46,8 @@ spring:
 #          password: abc.123
 # 开启日志输入
 mybatis:
+  mybatis:
+    mapper-locations: classpath*:mapper/**/*.xml # 确保这个路径能覆盖到你的XML文件
   configuration:
     #日志
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

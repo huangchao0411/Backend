@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yusdi.mapper.ServiceMapper">
-    <select id="serviceEntity" resultType="com.yousdi.entity.ServiceEntity">
-        select * from serviceEntity where isShow = 1 ORDER by sortID;
+<mapper namespace="com.yousdi.mapper.ServiceMapper">
+    <select id="service" resultType="com.yousdi.entity.ServiceEntity">
+        select * from service where isShow = 1 ORDER by sortID;
     </select>
     <select id="getServiceById" resultType="com.yousdi.entity.ServiceEntity">
-        select * from serviceEntity where id = #{id};
+        select * from service where id = #{id};
     </select>
     <insert id="addService" parameterType="com.yousdi.entity.ServiceEntity">
-        insert into serviceEntity (title, name, content, img) values (#{title}, #{name}, #{content}, #{img})
+        insert into service (title, name, content, img) values (#{title}, #{name}, #{content}, #{img})
     </insert>
     <update id="updateService" parameterType="com.yousdi.entity.ServiceEntity">
-        update serviceEntity set title = #{title}, name = #{name}, content = #{content}, img = #{img}, updateTime = #{updateTime} where id = #{id}
+        update service set title = #{title}, name = #{name}, content = #{content}, img = #{img}, updateTime = #{updateTime} where id = #{id}
     </update>
     <update id="delService" parameterType="integer">
-        update serviceEntity set isShow = 0 where id = #{id}
+        update service set isShow = 0 where id = #{id}
     </update>
 </mapper>
